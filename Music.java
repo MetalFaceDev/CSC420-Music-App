@@ -14,10 +14,13 @@ class Music {
  JLabel timeNow; //current time in track
  JLabel totTime; //total time in track
  JProgressBar trackTime; //shows current time position in song
+ JPanel topPanel;
+ JPanel bottomPanel;
  
 //Start Update
   
 //Update:
+  JSlider volumeSlider;
   JTextField searchBox;
  
 //New: 
