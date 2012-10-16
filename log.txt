@@ -1,5 +1,20 @@
 
-Thu Oct 11 23:12:58 EDT 2012
+======Thu Oct 11 23:12:58 EDT 2012  delvison
 -Progress bar for music track time position?
 http://docs.oracle.com/javase/tutorial/uiswing/components/progress.html
 
+
+======Sun Oct 14 02:03:54 EDT 2012  delvison
+--IDEA FOR DESIGN
+  --2 Main Panels --> TOP (compact mode section) --> Bottom (Complete Mode bottom half)
+     
+-----> TOP PANEL
+     --Panel to hold buttons on left (play, rwd, ff)
+     --Panel for the center console where the current track's info is displayed
+     --Panel to hold components on the right
+
+-----> BOTTOM PANEL
+     --Split into 3 panes
+         --Menu
+	 --Library
+	 --Current Playlist

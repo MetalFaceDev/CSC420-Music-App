@@ -3,18 +3,11 @@ import java.awt.*;
 
 class Music {
  
- JPanel infoDisplay; //holds the center display with progress bar
- JPanel buttonPanel; //holds buttons on left side
- JPanel tagPanel; //holds buttons for tags
+ CenterConsole infoDisplay; //holds the center display w/ info's
+ ButtonControlPanel btnPanel; //holds play,rwd,ff buttons
  JSlider volume; //slider for volume
  JTextField search; //search textbox
- JLabel artist; //artist 
- JLabel songTitle; //song name
- JLabel albumTitle; //album title
- JButton setTag; //button to set tag
- JLabel timeNow; //current time in track
- JLabel totTime; //total time in track
- JProgressBar trackTime; //shows current time position in song
+ JButton collapse; //switches interface from full to compact
 
   Music() {
     JFrame frm = new JFrame("Music App");
@@ -22,7 +15,11 @@ class Music {
     frm.setSize(720,500);
     frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
+    btnPanel = new ButtonControlPanel();
+    frm.add(btnPanel);
 
     frm.setVisible(true);
   }
 }
+
+//Do we want to use a liquid layout?
