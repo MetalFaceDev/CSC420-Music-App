@@ -5,40 +5,37 @@ class Music {
  
  CenterConsole infoDisplay; //holds the center display w/ info's
  ButtonControlPanel btnPanel; //holds play,rwd,ff buttons
+ SharePanel sharePanel; //holds share related stuff
  JTextField search; //search textbox
  JButton collapse; //switches interface from full to compact
- JLabel artist; //artist 
- JLabel songTitle; //song name
- JLabel albumTitle; //album title
- JButton setTag; //button to set tag
- JLabel timeNow; //current time in track
- JLabel totTime; //total time in track
- JProgressBar trackTime; //shows current time position in song
  JPanel topPanel;
  JPanel bottomPanel;
- 
-//Start Update
-  
-//Update:
-  JSlider volumeSlider;
-  JTextField searchBox;
- 
-//New: 
-  JScrollPane tracksPane;
-  JScrollPane playListPane;
-
-
-
-//End update
+ //these should go on the bottom custom panel
+ JScrollPane tracksPane;
+ JScrollPane playListPane;
 
   Music() {
     JFrame frm = new JFrame("Music App");
-    frm.setLayout( new FlowLayout());
-    frm.setSize(720,500);
+    frm.setLayout( new FlowLayout(FlowLayout.CENTER));
+    frm.setSize(850,500);
+    //frm.setMinimumSize();
     frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    
+
+//TOP PANEL STUFF HERE --->
+    topPanel = new JPanel();
+     
     btnPanel = new ButtonControlPanel();
-    frm.add(btnPanel);
+    infoDisplay = new CenterConsole();
+    sharePanel = new SharePanel();
+    infoDisplay.setBackground(Color.white); //this is white for debugging purposes
+
+    topPanel.add(btnPanel);
+    topPanel.add(infoDisplay);
+    topPanel.add(sharePanel);
+    frm.add(topPanel);
+
+//BOTTOM PANEL STUFF HERE --->
+    bottomPanel = new JPanel();
 
     frm.setVisible(true);
   }

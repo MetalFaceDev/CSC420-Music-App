@@ -1,6 +1,7 @@
 //this panel holds the rewind, play, fastForward, Shuffle and Repeat Buttons
 
 import javax.swing.*;
+import java.awt.*;
 
 class ButtonControlPanel extends JPanel {
  JButton play; //play button
@@ -9,20 +10,20 @@ class ButtonControlPanel extends JPanel {
  JButton shuffle; //toggles shuffle
  JButton repeat; //toggles repeat
  JSlider volumeSlider; //controls volume
+ JLabel volString;
 
  ButtonControlPanel() {
-    play = new JButton(">"); 
-    rewind = new JButton("<<");
-    fastForward = new JButton(">>");
-    repeat = new JButton("Repeat");
-    shuffle = new JButton("Shuffle");
-
-
-    this.add(rewind); //adds rwd btn to panel
-    this.add(play); //adds play btn to panel
-    this.add(fastForward); //adds ff btn to panel
-    this.add(repeat); //adds ff btn to panel
-    this.add(shuffle); //adds ff btn to panel
+   // this.setLayout(new GridLayout(2,3)); //layout for panel
+    this.setLayout(new FlowLayout());
+    Dimension size = new Dimension(190,110); //dimension of panel
+    this.setPreferredSize(size); //set size of panel
+    this.add(rewind = new JButton("<<"));
+    this.add(play = new JButton(">")); 
+    this.add(fastForward = new JButton(">>"));
+    this.add(repeat = new JButton("R"));
+    this.add(shuffle = new JButton("S"));
+    this.add(volumeSlider = new JSlider(0,100));
+    this.add(volString = new JLabel("Volume"));
  }
 }
 

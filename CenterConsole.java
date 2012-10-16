@@ -1,6 +1,7 @@
 //this panel is the center panel that contains the info of the current track playing.
 
 import javax.swing.*;
+import java.awt.*;
 
 class CenterConsole extends JPanel {
   JLabel artist; //artist 
@@ -14,6 +15,10 @@ class CenterConsole extends JPanel {
   JPanel tagPanel; //holds buttons for tags
  
   CenterConsole() {
+    //set layout
+    //set size
+    Dimension size = new Dimension(400,200); //dimension of panel
+    this.setPreferredSize(size); //set size of panel
    //add content to panel
   }
 }

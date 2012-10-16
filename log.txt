@@ -1,9 +1,4 @@
 
-======Thu Oct 11 23:12:58 EDT 2012  delvison
--Progress bar for music track time position?
-http://docs.oracle.com/javase/tutorial/uiswing/components/progress.html
-
-
 ======Sun Oct 14 02:03:54 EDT 2012  delvison
 --IDEA FOR DESIGN
   --2 Main Panels --> TOP (compact mode section) --> Bottom (Complete Mode bottom half)
@@ -18,3 +13,8 @@ http://docs.oracle.com/javase/tutorial/uiswing/components/progress.html
          --Menu
 	 --Library
 	 --Current Playlist
+
+======Thu Oct 11 23:12:58 EDT 2012  delvison
+-Progress bar for music track time position?
+http://docs.oracle.com/javase/tutorial/uiswing/components/progress.html
+
