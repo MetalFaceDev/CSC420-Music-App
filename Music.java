@@ -15,6 +15,21 @@ class Music {
  JLabel timeNow; //current time in track
  JLabel totTime; //total time in track
  JProgressBar trackTime; //shows current time position in song
+ 
+//Start Update
+  
+//Update:
+  JSlider volumeSlider;
+  JTextField searchBox;
+  JLabel artistLabel, titleLabel, albumLabel, timeNowLabel, totalTimeLabel;
+ 
+//New: 
+  JScrollPane tracksPane;
+  JScrollPane playListPane;
+
+
+
+//End update
 
   Music() {
     JFrame frm = new JFrame("Music App");
