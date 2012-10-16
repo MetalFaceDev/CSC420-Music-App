@@ -5,11 +5,8 @@ class Music {
  
  CenterConsole infoDisplay; //holds the center display w/ info's
  ButtonControlPanel btnPanel; //holds play,rwd,ff buttons
- JSlider volume; //slider for volume
  JTextField search; //search textbox
-<<<<<<< HEAD
  JButton collapse; //switches interface from full to compact
-=======
  JLabel artist; //artist 
  JLabel songTitle; //song name
  JLabel albumTitle; //album title
@@ -21,9 +18,7 @@ class Music {
 //Start Update
   
 //Update:
-  JSlider volumeSlider;
   JTextField searchBox;
-  JLabel artistLabel, titleLabel, albumLabel, timeNowLabel, totalTimeLabel;
  
 //New: 
   JScrollPane tracksPane;
@@ -32,7 +27,6 @@ class Music {
 
 
 //End update
->>>>>>> bd0004eb821c1485bbe52989e5e0b55b32c6dda1
 
   Music() {
     JFrame frm = new JFrame("Music App");

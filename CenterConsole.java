@@ -10,6 +10,7 @@ class CenterConsole extends JPanel {
   JLabel timeNow; //shows current time in track
   JLabel totTime; //shows total time in track
   JProgressBar trackTime; //shows current time position in song
+  //trackTime can maybe be a JSlider
   JPanel tagPanel; //holds buttons for tags
  
   CenterConsole() {
@@ -26,6 +27,10 @@ NEED LISTENERS FOR
 **JPanel tagPanel should update whenever a new tag is created and should load a tag when a tag is chosen
    --also this 'tagPanel' should hold buttons for the tags
      --do we want to generate a new button anytime a setTag is pushed and a new tag is made or
+
      have a static amount of buttons?
 
+-tagPanel has a static number of buttons. unused ones are grayed out or invisible
+
 -JLabel totTime is a static label...shouldn't change
+*/
