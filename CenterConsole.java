@@ -15,6 +15,7 @@ class CenterConsole extends JPanel {
   JPanel tagPanel; //holds buttons for tags
  
   CenterConsole() {
+    setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     //set layout
     //set size
     Dimension size = new Dimension(400,200); //dimension of panel

@@ -13,6 +13,7 @@ class ButtonControlPanel extends JPanel {
  JLabel volString;
 
  ButtonControlPanel() {
+    setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
    // this.setLayout(new GridLayout(2,3)); //layout for panel
     this.setLayout(new FlowLayout());
     Dimension size = new Dimension(190,110); //dimension of panel

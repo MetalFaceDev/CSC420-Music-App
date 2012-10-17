@@ -11,11 +11,10 @@ class SharePanel extends JPanel {
   JPanel likes;
 
   SharePanel() {
+   setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
    this.setLayout(new GridLayout(3,1)); //layout for panel
    this.add(shareIt = new JButton("Share"));
-   this.add(new JLabel(""));//blank cell in grid
    this.add(autoShare = new JCheckBox("Auto-Share"));
-   this.add(new JLabel(""));//blank cell in grid
 //here i compacted the "likes" stuff into a jpanel to fit it in same cell
    ImageIcon likeThumb = new ImageIcon("img/like.gif");
    likes = new JPanel();
