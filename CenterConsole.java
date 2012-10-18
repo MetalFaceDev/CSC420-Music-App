@@ -14,14 +14,16 @@ class CenterConsole extends JPanel {
   JLabel totTimeLabel; //shows total time in track
   JProgressBar trackTimeBar; //shows current time position in song
   //trackTime can maybe be a JSlider
-  JPanel tagPanel; //holds buttons for tags
+	
+  JPanel tagButtonPanel; //holds buttons for tags
+	JPanel tagPanel; //holds the visual tags
   JButton tagButton1;
   JButton tagButton2;
   JButton tagButton3;
   JButton tagButton4;
   JButton tagButton5;
   JButton tagButton6;
-
+	JButton tabRemoveButton;
 
  
   CenterConsole() {
@@ -29,13 +31,17 @@ class CenterConsole extends JPanel {
     
 		//set layout
 		setLayout(new GridBagLayout());
+	
+		//initialize Components
 		initComponents();
 	
     //set size
     Dimension size = new Dimension(400,200); //dimension of panel
     this.setPreferredSize(size); //set size of panel
-	
+		this.setBackground(Color.BLACK);	
+
   }
+
 	public void initComponents(){
 		artistLabel = new JLabel("Artist");
 		titleLabel = new JLabel("Title");
@@ -45,6 +51,7 @@ class CenterConsole extends JPanel {
 		totTimeLabel = new JLabel("0:00");
 		trackTimeBar = new JProgressBar(0,0); //initializes JProgressBar to 0 until a track is linked up 	    
 		tagPanel = new JPanel();
+		
 
 		GridBagConstraints c = new GridBagConstraints();
 		
@@ -111,23 +118,46 @@ class CenterConsole extends JPanel {
 		c.fill = GridBagConstraints.HORIZONTAL;
 		this.add(tagPanel,c);
 
-		
-		
-
 	//adds listeners to CenterContent
+
 		setTagButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//tag the current point in the track
+				postTag();
 			}
 		});
 	
 		trackTimeBar.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e){
 				//updates timeNowLabel as track progresses
+				timeNowLabel.setText(trackTimeBar.getValue().toString());
 			}
 		});		
 
 
+	}
+
+	public void changeTrackInfo(Track t){
+		titleLabel.setText(t.title);
+		
+		if(t.artist != null){
+			artistLabel.setText(t.artist);
+		}else{
+			artistLabel.setText("");
+		}
+	
+		if(t.album != null){
+			albumLabel.setText(t.album);
+		}else{
+			albumLabel.setText("");
+		}
+
+		//set totTimeLabel with the length of the track
+		
+	}
+
+	public void postTag(){
+		//post tag at current time position of the track
 	}
 	
 }
