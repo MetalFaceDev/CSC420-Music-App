@@ -1,4 +1,11 @@
 
+======Thu Oct 18 14:55:31 EDT 2012
+--ideas about playing audio files with java
+http://www.javaworld.com/community/node/7498
+
+--it also looks like the JLayer plugin will help us out with mp3 playback
+http://thiscouldbebetter.wordpress.com/2011/07/04/pausing-an-mp3-file-using-jlayer/
+
 ======Sun Oct 14 02:03:54 EDT 2012  delvison
 --IDEA FOR DESIGN
   --2 Main Panels --> TOP (compact mode section) --> Bottom (Complete Mode bottom half)

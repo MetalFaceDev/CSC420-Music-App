@@ -130,7 +130,7 @@ class CenterConsole extends JPanel {
 		trackTimeBar.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e){
 				//updates timeNowLabel as track progresses
-				timeNowLabel.setText(trackTimeBar.getValue().toString());
+			//	timeNowLabel.setText(trackTimeBar.getValue().toString());
 			}
 		});		
 
