@@ -1,0 +1,26 @@
+//this panel will hold the menu on the bottom left panel
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+class BottomPanel extends JPanel {
+  JScrollPane libraryPane;
+  JList leftMenu;
+  JList playlist;
+  JTable library;
+
+  BottomPanel() {
+    this.setLayout(new GridLayout(1,3)); //layout for panel
+    this.add(new JLabel("Menu here."));
+    this.add(new JLabel("Library here."));
+    this.add(new JLabel("Playlist here."));
+    //JScrollPane lib = new JScrollPane(leftMenu);
+    //JScrollPane pList = new JScrollPane(playList);
+    //leftMenu.addMouseListener(mouseListener); //add a mouse listener
+    //playList.addMouseListener(mouseListener2); //add a mouse listener
+  }
+  /*
+  
+  */
+}

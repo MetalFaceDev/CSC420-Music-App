@@ -1,4 +1,8 @@
 
+=====Tue Oct 23 14:35:15 EDT 2012
+--SwingX library has JXMultiSplitPane class which allows you to create any layouts of resizable panels.
+----A very good article about it is at http://today.java.net/pub/a/today/2006/03/23/multi-split-pane.html
+
 ======Thu Oct 18 14:55:31 EDT 2012
 --ideas about playing audio files with java
 http://www.javaworld.com/community/node/7498

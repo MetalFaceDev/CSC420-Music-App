@@ -23,7 +23,9 @@ class ButtonControlPanel extends JPanel {
     this.add(fastForward = new JButton(">>"));
     this.add(repeat = new JButton("R"));
     this.add(shuffle = new JButton("S"));
-    this.add(volumeSlider = new JSlider(0,100));
+    volumeSlider = new JSlider(0,100);
+    volumeSlider.setPreferredSize(new Dimension(180,20));
+    this.add(volumeSlider);
     this.add(volString = new JLabel("Volume"));
  }
 }
