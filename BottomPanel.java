@@ -10,27 +10,47 @@ class BottomPanel extends JPanel {
   JList leftMenu;
   JList playlist;
   JTable library;
-  String[] menuOptions = {"Music","Playlist","Likes"}; //for debugging
+  String[] menuOptions = {"Music","Playlist","Likes"};
   private String[] tableHeaders = {"Title", "Artist", "Album"};
-  private String[][] sampleTracks = {{"Optimist","P.O.S","Never Better"},{"Skipping Rocks","Oddisee","People See What They Hear"}};
+  private String[][] sampleTracks = {{"Optimist","P.O.S","Never Better"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"}};
   //arraylist to hold track objects
+  JSplitPane libraryAndPlaylist; //holds library and playlist jscrollpanes
+GridBagLayout gbag = new GridBagLayout();
+ GridBagConstraints gbc = new GridBagConstraints();
 
   BottomPanel() {
-    this.setLayout(new GridLayout(1,3)); //layout for panel
-    //this.add(new JLabel("Menu here."));
-    //this.add(new JLabel("Playlist here."));
+    //this.setLayout(new GridLayout(1,1)); //layout for panel
+    this.setLayout(gbag); //layout for panel
     leftMenu = new JList(menuOptions);
     playlist = new JList(menuOptions);
-
-    JScrollPane lib = new JScrollPane(leftMenu);
+    library = new JTable(sampleTracks,tableHeaders);
+    JScrollPane lib = new JScrollPane(library);
     JScrollPane pList = new JScrollPane(playlist);
+    JScrollPane scroll = new JScrollPane(library);
+    libraryAndPlaylist = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, pList);
+
+
+    leftMenu.setPreferredSize(new Dimension(100,400));
+    leftMenu.setMaximumSize(new Dimension(1000,1000));
+
+
+
+
     //leftMenu.addMouseListener(mouseListener); //add a mouse listener
     //playList.addMouseListener(mouseListener2); //add a mouse listener
-    this.add(lib);
-    library = new JTable(sampleTracks,tableHeaders);
-    JScrollPane scroll = new JScrollPane(library);
-    this.add(scroll);
-    this.add(pList);
+   gbc.gridx =0;
+    gbc.gridy =0;
+    gbag.setConstraints(leftMenu, gbc);
+
+    this.add(leftMenu);
+
+
+gbc.gridx =1;
+    gbc.gridy =0;
+    gbag.setConstraints(libraryAndPlaylist, gbc);
+
+    this.add(libraryAndPlaylist);
   }
 
   /*

@@ -1,11 +1,9 @@
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 class Music implements ActionListener {
- 
+
  JFrame frm;
  CenterConsole infoDisplay; //holds the center display w/ info's
  ButtonControlPanel btnPanel; //holds play,rwd,ff buttons
@@ -13,54 +11,76 @@ class Music implements ActionListener {
  JTextField search; //search textbox
  JButton collapse; //switches interface from full to compact
  JPanel topPanel;
- JPanel topLeftPanel;
+ JPanel topLeftPanel; //holds sharepanel and collapse btn
  BottomPanel bottomPanel;
+ GridBagLayout gbag = new GridBagLayout();
+ GridBagConstraints gbc = new GridBagConstraints();
 
   Music() {
     frm = new JFrame("Music App");
-    //frm.setLayout( new FlowLayout());
-    frm.setLayout( new GridLayout(0,1));
-
+    frm.setLayout(gbag);
     frm.setSize(850,850);
     //frm.setMinimumSize();
     frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-//TOP PANEL STUFF HERE --->
+
     topPanel = new JPanel();
-    
+
     btnPanel = new ButtonControlPanel();
     infoDisplay = new CenterConsole();
     sharePanel = new SharePanel();
-    infoDisplay.setBackground(Color.white); //this is white for debugging purposes
     collapse = new JButton("↑");
-    collapse.setPreferredSize(new Dimension(25, 25));
+    topLeftPanel = new JPanel();
+    JPanel p = new JPanel();
+    bottomPanel = new BottomPanel();
+
+
+//TOP PANEL STUFF HERE --->
+    topPanel.setLayout(new FlowLayout());
+    infoDisplay.setBackground(Color.white);
+
+
+    collapse.setPreferredSize(new Dimension(60, 30));
     collapse.addActionListener(this);
 
     topPanel.add(btnPanel);
     topPanel.add(infoDisplay);
-    topLeftPanel = new JPanel();
-    topLeftPanel.setLayout(new GridLayout(2,1));
+
+
+    topLeftPanel.setLayout(new FlowLayout());
     topLeftPanel.add(sharePanel);
-    topLeftPanel.add(collapse);
+
+
+    p.setLayout(new FlowLayout());
+    p.add(collapse);
+    topLeftPanel.add(p);
     topPanel.add(topLeftPanel);
 
+    gbc.gridx =0;
+    gbc.gridy =0;
+    gbag.setConstraints(topPanel, gbc);
     frm.add(topPanel);
 
 //BOTTOM PANEL STUFF HERE --->
-    bottomPanel = new BottomPanel();
+    gbc.gridx =0;
+    gbc.gridy = 1;
+    gbag.setConstraints(bottomPanel, gbc);
     frm.add(bottomPanel);
     frm.pack();
     frm.setVisible(true);
   }
-  
+
   public void actionPerformed(ActionEvent e) {
     if (e.getActionCommand().equals("↑")) {
       frm.remove(bottomPanel);
       frm.pack();
       collapse.setText("↓");
-       
+
     }
     else if (e.getActionCommand().equals("↓")) {
+      gbc.gridx =0;
+      gbc.gridy = 1;
+      gbag.setConstraints(bottomPanel, gbc);
       frm.add(bottomPanel);
       frm.pack();
       collapse.setText("↑");
