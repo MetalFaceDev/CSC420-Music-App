@@ -14,6 +14,7 @@ class CenterConsole extends JPanel {
   JLabel totTimeLabel; //shows total time in track
   JProgressBar trackTimeBar; //shows current time position in song
   //trackTime can maybe be a JSlider
+<<<<<<< HEAD
   JPanel tagButtonPanel; //holds buttons for tags
   JPanel tagPanel; //holds the visual tags
   JButton tagButton1;
@@ -25,12 +26,20 @@ class CenterConsole extends JPanel {
   JButton tabRemoveButton;
 
   CenterConsole() {
+=======
+	
+  TagButtonPanel tagButtonPanel; //holds buttons for tags
+	JPanel tagPanel; //holds the visual tags
+
+  public CenterConsole() {
+>>>>>>> test
     setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     setLayout(new GridBagLayout()); //set layout
     initComponents(); //initialize components
     //set size
     Dimension size = new Dimension(400,150); //dimension of panel
     this.setPreferredSize(size); //set size of panel
+<<<<<<< HEAD
     this.setBackground(Color.BLACK);	
   }
 
@@ -139,6 +148,138 @@ class CenterConsole extends JPanel {
      
      public void postTag(){
         //post tag at current time position of the track
+=======
+  }
+
+	public void initComponents(){
+		artistLabel = new JLabel("Artist");
+		titleLabel = new JLabel("Title");
+		albumLabel = new JLabel("Album");
+		setTagButton = new JButton("Tag");
+		timeNowLabel = new JLabel("0:00");
+		totTimeLabel = new JLabel("0:00");
+		trackTimeBar = new JProgressBar(0,0); //initializes JProgressBar to 0 until a track is linked up 	    
+		tagButtonPanel = new TagButtonPanel();
+		tagPanel = new JPanel();
+		GridBagConstraints c = new GridBagConstraints();
+
+	//add artistLabel
+		c.gridx = 3;
+		c.gridy = 0;
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		
+		this.add(artistLabel,c);
+
+	//add titleArtist
+		c.gridx = 3;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		this.add(titleLabel,c);
+
+	//add albumLabel
+		c.gridx = 3;
+		c.gridy = 2;
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		this.add(albumLabel,c);
+
+	//add setTagButton
+		c.gridx = 4;
+		c.gridy = 1;
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		this.add(setTagButton,c);
+
+
+	//add timeNowLabel
+		c.gridx = 0;
+		c.gridy = 3;
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .2;
+		this.add(timeNowLabel,c);
+
+	//add trackTimeBar
+		c.gridx = 1;
+		c.gridy = 3;
+		c.gridwidth = 3;
+		c.gridheight = 1;
+		c.weightx = .6;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		this.add(trackTimeBar,c);
+
+	//add totTimeLabel
+		c.gridx = 4;
+		c.gridy = 3;
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .2;
+		this.add(totTimeLabel,c);
+
+	//add tagPanel
+			c.gridx = 1;
+			c.gridy = 4;
+			c.gridheight = 1;
+			c.weightx = .6;
+			c.gridwidth = 3;
+		
+			c.fill = GridBagConstraints.HORIZONTAL;
+			this.add(tagPanel,c);
+
+	//add tagButtonPanel
+		c.gridx = 0;
+		c.gridy = 5;
+		c.gridwidth = 5;
+		c.gridheight = 1;
+		c.weightx = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		this.add(tagButtonPanel,c);
+	
+	//adds listeners to CenterContent
+
+		setTagButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				//tag the current point in the track
+				postTag();
+			}
+		});
+	
+		trackTimeBar.addChangeListener(new ChangeListener(){
+			public void stateChanged(ChangeEvent e){
+				//updates timeNowLabel as track progresses
+				//timeNowLabel.setText(trackTimeBar.toValue().toString());
+				timeNowLabel = trackTimeBar.getValue();
+
+			}
+		});		
+
+
+	}
+
+	public void changeCenterInfo(Track t){
+		titleLabel.setText(t.title);
+		
+		if(t.artist != null){
+			artistLabel.setText(t.artist);
+		}else{
+			artistLabel.setText("");
+		}
+	
+		if(t.album != null){
+			albumLabel.setText(t.album);
+		}else{
+			albumLabel.setText("");
+		}
+
+		//set totTimeLabel with the length of the track
+		
+	}
+
+	public void postTag(){
+		//post tag at current time position of the track
+>>>>>>> test
 	}
 	
 }
