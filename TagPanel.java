@@ -25,7 +25,7 @@ public class TagPanel extends JPanel{
 
 	public void addTag(int tagNumber, int time){
 		Tag tag = new Tag(tagNumber, time);	
-		tags.add(tag, tagNumber - 1);
+		tags.add(tagNumber - 1,tag);
 	}
 
 	public void removeTag(int tagNumber){
