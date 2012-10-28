@@ -21,6 +21,7 @@ class Music implements ActionListener {
     frm.setLayout(gbag);
     frm.setSize(890,920);
     //frm.setMinimumSize();
+    frm.setResizable(false);
     frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     topPanel = new JPanel();
