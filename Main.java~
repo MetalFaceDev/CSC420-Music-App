@@ -5,7 +5,7 @@ class Main {
 
     try {
             // Set cross-platform Java L&F (also called "Metal")
-UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 
     }
     catch (UnsupportedLookAndFeelException e) {
