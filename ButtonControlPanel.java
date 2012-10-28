@@ -13,7 +13,7 @@ class ButtonControlPanel extends JPanel {
  JLabel volString;
 
  ButtonControlPanel() {
-    setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+    //setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
    // this.setLayout(new GridLayout(2,3)); //layout for panel
     this.setLayout(new FlowLayout());
     Dimension size = new Dimension(190,110); //dimension of panel
@@ -24,9 +24,10 @@ class ButtonControlPanel extends JPanel {
     this.add(repeat = new JButton("R"));
     this.add(shuffle = new JButton("S"));
     volumeSlider = new JSlider(0,100);
-    volumeSlider.setPreferredSize(new Dimension(180,20));
+    volumeSlider.setPreferredSize(new Dimension(180,45));
     this.add(volumeSlider);
     this.add(volString = new JLabel("Volume"));
+    this.setBorder(BorderFactory.createEtchedBorder());
  }
 }
 

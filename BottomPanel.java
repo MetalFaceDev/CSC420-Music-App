@@ -16,12 +16,12 @@ class BottomPanel extends JPanel {
   {"Skipping Rocks","Oddisee","People See What They Hear"}};
   //arraylist to hold track objects
   JSplitPane libraryAndPlaylist; //holds library and playlist jscrollpanes
-GridBagLayout gbag = new GridBagLayout();
- GridBagConstraints gbc = new GridBagConstraints();
+  GridBagLayout gbag = new GridBagLayout();
+  GridBagConstraints gbc = new GridBagConstraints();
 
   BottomPanel() {
-    //this.setLayout(new GridLayout(1,1)); //layout for panel
     this.setLayout(gbag); //layout for panel
+
     leftMenu = new JList(menuOptions);
     playlist = new JList(menuOptions);
     library = new JTable(sampleTracks,tableHeaders);
@@ -30,23 +30,19 @@ GridBagLayout gbag = new GridBagLayout();
     JScrollPane scroll = new JScrollPane(library);
     libraryAndPlaylist = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, pList);
 
-
-    leftMenu.setPreferredSize(new Dimension(100,400));
-    leftMenu.setMaximumSize(new Dimension(1000,1000));
-
-
-
+    leftMenu.setPreferredSize(new Dimension(100,410));
+    //leftMenu.setMaximumSize(new Dimension(1000,1000));
 
     //leftMenu.addMouseListener(mouseListener); //add a mouse listener
     //playList.addMouseListener(mouseListener2); //add a mouse listener
-   gbc.gridx =0;
+    gbc.gridx =0;
     gbc.gridy =0;
     gbag.setConstraints(leftMenu, gbc);
-
+    leftMenu.setBorder(BorderFactory.createEtchedBorder());
+    gbc.anchor = GridBagConstraints.WEST;
     this.add(leftMenu);
 
-
-gbc.gridx =1;
+    gbc.gridx =1;
     gbc.gridy =0;
     gbag.setConstraints(libraryAndPlaylist, gbc);
 
