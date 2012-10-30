@@ -2,6 +2,7 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 class SharePanel extends JPanel {
   JButton shareIt;
@@ -44,6 +45,12 @@ class SharePanel extends JPanel {
    this.add(likes);
    
    search = new JTextField(8);
+   search.setText("Search..");
+/*   search.addMouseListener(new MouseListener(){
+	   public void mouseClicked(MouseEvent e){
+	     search.setText("");
+	   }
+   });*/
    gbc.gridx =0;
    gbc.gridy=3;
    gbag.setConstraints(search, gbc);

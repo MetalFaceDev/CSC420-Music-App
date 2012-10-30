@@ -18,8 +18,9 @@ class Music implements ActionListener {
 
   Music() {
     frm = new JFrame("Music App");
-    frm.setLayout(gbag);
-    frm.setSize(890,920);
+    //frm.setLayout(gbag);
+    frm.setLayout(new VerticalLayout());
+   // frm.setSize(890,920);
     //frm.setMinimumSize();
     frm.setResizable(false);
     frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,15 +54,15 @@ class Music implements ActionListener {
     topLeftPanel.add(p);
     topPanel.add(topLeftPanel);
 
-    gbc.gridx =0;
-    gbc.gridy =0;
-    gbag.setConstraints(topPanel, gbc);
+    //gbc.gridx =0;
+    //gbc.gridy =0;
+    //gbag.setConstraints(topPanel, gbc);
     frm.add(topPanel);
 
 //BOTTOM PANEL STUFF HERE --->
-    gbc.gridx =0;
-    gbc.gridy = 1;
-    gbag.setConstraints(bottomPanel, gbc);
+    //gbc.gridx =0;
+    //gbc.gridy = 1;
+    //gbag.setConstraints(bottomPanel, gbc);
     frm.add(bottomPanel);
     frm.pack();
 

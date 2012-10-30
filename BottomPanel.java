@@ -11,37 +11,61 @@ class BottomPanel extends JPanel {
   JList playlist;
   JTable library;
   String[] menuOptions = {"Music","Playlist","Likes"};
-  private String[] tableHeaders = {"Title", "Artist", "Album"};
-  private String[][] sampleTracks = {{"Optimist","P.O.S","Never Better"},
+  String[] playlistOptions = {"next songs go here","Song1","Song2","Song3","Song4","anotherSong",
+  "MoreSongs..","Song1","Song2","Song3","Song4","anotherSong","MoreSongs..","somemoremusic","anotheranotheranothersong","moremoremoremusic"};
+  private String[] tableHeaders = {"Track Title", "Artist", "Album"};
+  private String[][] sampleTracks = {{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
+  {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
   {"Skipping Rocks","Oddisee","People See What They Hear"}};
+
   //arraylist to hold track objects
   JSplitPane libraryAndPlaylist; //holds library and playlist jscrollpanes
-  GridBagLayout gbag = new GridBagLayout();
-  GridBagConstraints gbc = new GridBagConstraints();
 
   BottomPanel() {
-    this.setLayout(gbag); //layout for panel
 
     leftMenu = new JList(menuOptions);
-    JPanel menuTop = new JPanel();
-    menuTop.setPreferredSize(new Dimension(30,30));
-    menuTop.add(new JLabel("Menu"));
+    leftMenu.setPreferredSize(new Dimension(65,400));
+    leftMenu.setBorder(BorderFactory.createEtchedBorder());
+    JPanel menuLabel = new JPanel();
+    //menuLabel.setPreferredSize(new Dimension(30,30));
+    menuLabel.add(new JLabel("Menu"));
     JPanel menuPane = new JPanel();
-    //menuPane.setLayout(new GridLayout(0,1));
-    //menuPane.setLayout(new GridLayout(0,1));
-    menuPane.setLayout(new BoxLayout(menuPane, BoxLayout.Y_AXIS)); 
+    menuPane.setLayout(new VerticalLayout());
+    menuPane.add(menuLabel);
     menuPane.add(leftMenu);
-    //menuPane.add(menuTop);
+    //menuPane.setPreferredSize(new Dimension(65,400));
     menuPane.setBorder(BorderFactory.createEtchedBorder());
 
-    playlist = new JList(menuOptions);
+    playlist = new JList(playlistOptions);
+    JPanel playBar = new JPanel();
+    playBar.setLayout(new VerticalLayout());
+    playBar.add(new JLabel("Current Playlist"));
     library = new JTable(sampleTracks,tableHeaders);
     JScrollPane lib = new JScrollPane(library);
+    //lib.setPreferredSize(new Dimension(600,400));
     JScrollPane pList = new JScrollPane(playlist);
+    pList.setPreferredSize(new Dimension(150,400));
+    playBar.add(pList);
+    playBar.setBorder(BorderFactory.createEtchedBorder());
     JScrollPane scroll = new JScrollPane(library);
 
     //leftMenu.setPreferredSize(new Dimension(100,410));
-    JSplitPane b = new JSplitPane(JSplitPane.VERTICAL_SPLIT,scroll,pList);
+    JSplitPane b = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,playBar);
     JPanel top = new JPanel();
     top.add(b);
     libraryAndPlaylist = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, menuPane, top);
@@ -50,18 +74,7 @@ class BottomPanel extends JPanel {
 
     //leftMenu.addMouseListener(mouseListener); //add a mouse listener
     //playList.addMouseListener(mouseListener2); //add a mouse listener
-    gbc.gridx =0;
-    gbc.gridy =0;
-    //gbag.setConstraints(leftMenu, gbc);
-    gbag.setConstraints(libraryAndPlaylist, gbc);
-    gbc.anchor = GridBagConstraints.WEST;
     this.add(libraryAndPlaylist);
-
-  //  gbc.gridx =1;
-  //  gbc.gridy =0;
- //   gbag.setConstraints(libraryAndPlaylist, gbc);
-
-   // this.add(libraryAndPlaylist);
   }
 
   /*
