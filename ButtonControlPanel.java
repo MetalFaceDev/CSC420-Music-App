@@ -31,6 +31,13 @@ class ButtonControlPanel extends JPanel {
     p.setLayout(new VerticalLayout());
     this.add(p);
     this.setBorder(BorderFactory.createEtchedBorder());
+
+    play.setToolTipText("Play loaded song");
+    rewind.setToolTipText("Play previous song");
+    fastForward.setToolTipText("Play next song");
+    shuffle.setToolTipText("Shuffle loaded playlist");
+    repeat.setToolTipText("Repeat current playlist");
+
  }
 }
 

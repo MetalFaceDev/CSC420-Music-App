@@ -22,9 +22,9 @@ class Music implements ActionListener {
     frm = new JFrame("Music App");
     //frm.setLayout(gbag);
     frm.setLayout(new VerticalLayout());
-   // frm.setSize(890,920);
+    frm.setSize(890,920);
     //frm.setMinimumSize();
-    frm.setResizable(false);
+   // frm.setResizable(false);
     frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     topPanel = new JPanel();
@@ -48,7 +48,7 @@ class Music implements ActionListener {
     topPanel.add(btnPanel);
     topPanel.add(infoDisplay);
 
-    topLeftPanel.setLayout(new FlowLayout());
+    topLeftPanel.setLayout(new VerticalLayout());
     topLeftPanel.add(sharePanel);
 
     p.setLayout(new FlowLayout());
@@ -74,6 +74,8 @@ class Music implements ActionListener {
     frm.pack();
 
     frm.setVisible(true);
+  //  TagPopupFrame f = new TagPopupFrame();
+   // f.setVisible(true);
   }
 
   public void actionPerformed(ActionEvent e) {

@@ -26,6 +26,7 @@ class SharePanel extends JPanel implements ActionListener {
    gbc.anchor = GridBagConstraints.NORTHWEST;
    gbag.setConstraints(shareIt, gbc);
    this.add(shareIt);
+   shareIt.setToolTipText("Share this song!");
    shareIt.addActionListener(this);
 
    autoShare = new JCheckBox("Auto-Share");
@@ -57,6 +58,7 @@ class SharePanel extends JPanel implements ActionListener {
    gbc.gridy=3;
    gbag.setConstraints(search, gbc);
    search.setActionCommand("search");
+    this.setBorder(BorderFactory.createEtchedBorder());
    //this.add(search);
   }
   public void actionPerformed(ActionEvent e){

@@ -22,9 +22,9 @@ class Music implements ActionListener {
     frm = new JFrame("Music App");
     //frm.setLayout(gbag);
     frm.setLayout(new VerticalLayout());
-   // frm.setSize(890,920);
+    frm.setSize(890,920);
     //frm.setMinimumSize();
-    frm.setResizable(false);
+   // frm.setResizable(false);
     frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     topPanel = new JPanel();
@@ -33,6 +33,7 @@ class Music implements ActionListener {
     infoDisplay = new CenterConsole();
     sharePanel = new SharePanel();
     collapse = new JButton("↑");
+    collapse.setToolTipText("Switch to compact mode.");
     topLeftPanel = new JPanel();
     JPanel p = new JPanel();
     bottomPanel = new BottomPanel();
@@ -74,22 +75,25 @@ class Music implements ActionListener {
     frm.pack();
 
     frm.setVisible(true);
+  //  TagPopupFrame f = new TagPopupFrame();
+   // f.setVisible(true);
   }
 
   public void actionPerformed(ActionEvent e) {
     if (e.getActionCommand().equals("↑")) {
       frm.remove(bottomPanel);
-			searchPanel.setCollapseSearchVisible(true);
+      searchPanel.setCollapseSearchVisible(true);
       frm.pack();
       collapse.setText("↓");
-
+    collapse.setToolTipText("Switch to full mode.");
     }
     else if (e.getActionCommand().equals("↓")) {
       gbc.gridx =0;
       gbc.gridy = 1;
       gbag.setConstraints(bottomPanel, gbc);
       frm.add(bottomPanel);
-			searchPanel.setCollapseSearchVisible(false);
+      searchPanel.setCollapseSearchVisible(false);
+      collapse.setToolTipText("Switch to compact mode.");
       frm.pack();
       collapse.setText("↑");
     }

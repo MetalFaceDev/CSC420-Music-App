@@ -26,6 +26,7 @@ class SharePanel extends JPanel implements ActionListener {
    gbc.anchor = GridBagConstraints.NORTHWEST;
    gbag.setConstraints(shareIt, gbc);
    this.add(shareIt);
+   shareIt.setToolTipText("Share this song!");
    shareIt.addActionListener(this);
 
    autoShare = new JCheckBox("Auto-Share");
@@ -34,6 +35,7 @@ class SharePanel extends JPanel implements ActionListener {
    gbc.anchor = GridBagConstraints.WEST;
    gbag.setConstraints(autoShare, gbc);
    this.add(autoShare);
+    autoShare.setToolTipText("Auto-share every song played");
 
    //here i compacted the "likes" stuff into a jpanel to fit it in same cell
    ImageIcon likeThumb = new ImageIcon("img/like.gif");
