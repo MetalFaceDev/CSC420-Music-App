@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class TagPanel extends JPanel{
 	
-	Tag[] tags = new Tag[11];	
+	Tag[] tags = new Tag[11];
+	TagButtonPanel tBP;	
 	
 	boolean clear = true;
 
@@ -43,6 +44,7 @@ public class TagPanel extends JPanel{
 				double temp = (double)position;
 				temp = temp *.01;
 				tag.xPosition = (int)(this.getWidth() * temp) -3;
+				tBP.buttonArray[i].setEnabled(true);
 				Integer tempInt = new Integer(i);
 				tag.value = tempInt.toString();
 				tags[i] = tag;
@@ -56,13 +58,14 @@ public class TagPanel extends JPanel{
 		drawTag();
 	}
 
+	public void setTagButtonPanel(TagButtonPanel tagButtonPanel){
+		tBP = tagButtonPanel;
+	}
+
 	public void removeTag(int tagNumber){
 		tags[tagNumber - 1] = null;
 	}
 
-	public void calcPosition(){
-		
-	}
 
 	public void clearTags(){
 		clear = true;

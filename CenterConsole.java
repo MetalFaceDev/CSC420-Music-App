@@ -38,9 +38,9 @@ class CenterConsole extends JPanel {
   }
 
 	public void initComponents(){
-		artistLabel = new JLabel("P.O.S.");
-		titleLabel = new JLabel("Optimist");
-		albumLabel = new JLabel("Never Better");
+		artistLabel = new JLabel("Analogtronics");
+		titleLabel = new JLabel("Time Leak");
+		albumLabel = new JLabel("Union");
 		setTagButton = new JButton("Tag");
 		timeNowLabel = new JLabel("0:00");
 		totTimeLabel = new JLabel("2:30");
@@ -52,6 +52,9 @@ class CenterConsole extends JPanel {
 		tagPanel.setBackground(Color.WHITE);	
 		tagButtonPanel.setTagPanel(tagPanel);
 		tagButtonPanel.setSlider(trackTimeSlider);
+		tagPanel.setTagButtonPanel(tagButtonPanel);
+		Dimension dim = new Dimension(300,100);
+		tagPanel.setPreferredSize(dim);
 		GridBagConstraints c = new GridBagConstraints();
 
 	//add artistLabel
