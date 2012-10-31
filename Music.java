@@ -15,6 +15,8 @@ class Music implements ActionListener {
  BottomPanel bottomPanel;
  GridBagLayout gbag = new GridBagLayout();
  GridBagConstraints gbc = new GridBagConstraints();
+ SearchPanel searchPanel;
+
 
   Music() {
     frm = new JFrame("Music App");
@@ -59,6 +61,11 @@ class Music implements ActionListener {
     //gbag.setConstraints(topPanel, gbc);
     frm.add(topPanel);
 
+//SEARCH PANEL STUFF HERE --->
+		searchPanel = new SearchPanel();
+		frm.add(searchPanel);
+
+
 //BOTTOM PANEL STUFF HERE --->
     //gbc.gridx =0;
     //gbc.gridy = 1;
@@ -72,6 +79,7 @@ class Music implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     if (e.getActionCommand().equals("↑")) {
       frm.remove(bottomPanel);
+			searchPanel.setCollapseSearchVisible(true);
       frm.pack();
       collapse.setText("↓");
 
@@ -81,6 +89,7 @@ class Music implements ActionListener {
       gbc.gridy = 1;
       gbag.setConstraints(bottomPanel, gbc);
       frm.add(bottomPanel);
+			searchPanel.setCollapseSearchVisible(false);
       frm.pack();
       collapse.setText("↑");
     }
