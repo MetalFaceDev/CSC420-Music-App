@@ -42,9 +42,7 @@ public class TagPanel extends JPanel{
 				tag.slidePosition = position;
 				double temp = (double)position;
 				temp = temp *.01;
-				System.out.println(temp);	
 				tag.xPosition = (int)(this.getWidth() * temp) -3;
-				System.out.println(tag.xPosition);
 				Integer tempInt = new Integer(i);
 				tag.value = tempInt.toString();
 				tags[i] = tag;

@@ -36,11 +36,12 @@ public class Track{
 	}
 
 	public String timeToString(){
-		String minutes, seconds, stringTime = 0;
-		minutes = currentTime / 60;
-		seconds = currentTime % 60;
-		stringTime = minutes + ":" + seconds;
-		return stringTime;
+		int minutes, seconds;
+		String time;
+		minutes =  currentTime / 60;
+		seconds =  currentTime % 60;
+		time = minutes + ":" + seconds;
+		return time;
 		
 	}
 

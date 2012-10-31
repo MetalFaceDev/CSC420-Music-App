@@ -3,6 +3,8 @@ public class Tag{
 	int tagNumber;
 	int time;
 	int xPosition;
+	int slidePosition;
+	String value;
 
 	public Tag(int tagNumber, int time){
 		this.tagNumber = tagNumber;

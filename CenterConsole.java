@@ -48,7 +48,7 @@ class CenterConsole extends JPanel {
 		trackTimeSlider.setValue(0);
 		tagButtonPanel = new TagButtonPanel();
 		tagPanel = new TagPanel();
-		tagPanel.setSize(trackTimeSlider.getWidth(),15);
+		//tagPanel.setSize(trackTimeSlider.getWidth(),100);
 		tagPanel.setBackground(Color.WHITE);	
 		tagButtonPanel.setTagPanel(tagPanel);
 		tagButtonPanel.setSlider(trackTimeSlider);
