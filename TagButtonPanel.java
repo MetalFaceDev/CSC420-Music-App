@@ -14,6 +14,8 @@ public class TagButtonPanel extends JPanel{
 	JButton tagButton9;
 	JButton tagButton10;
 	JButton removeButton;
+	TagPanel tagPanel;
+	JSlider jSlider;
 
 	public TagButtonPanel(){
 		this.setLayout(new FlowLayout());
@@ -63,60 +65,70 @@ public class TagButtonPanel extends JPanel{
 		
 		tagButton1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//play track from tag pointer		
+				//play track from tag pointer
+				moveSlider(1);		
 			}
 		});
 	
 		tagButton2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//play track from tag pointer		
+				moveSlider(2);		
 			}
 		});
 		
 		tagButton3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//play track from tag pointer		
+				moveSlider(3);		
 			}
 		});
 		
 		tagButton4.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//play track from tag pointer		
+				moveSlider(4);		
 			}
 		});
 
 		tagButton5.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//play track from tag pointer		
+				moveSlider(5);		
 			}
 		});
 		tagButton6.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//play track from tag pointer		
+				moveSlider(6);		
 			}
 		});
 		
 		tagButton7.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//play track from tag pointer		
+				moveSlider(7);		
 			}
 		});
 
 		tagButton8.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//play track from tag pointer		
+				moveSlider(8);		
 			}
 		});
 
 		tagButton9.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//play track from tag pointer		
+				moveSlider(9);		
 			}
 		});
 
 		tagButton10.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				//play track from tag pointer		
+				moveSlider(10);		
 			}
 		});
 
@@ -126,6 +138,21 @@ public class TagButtonPanel extends JPanel{
 			}
 		});
 		
+	}
+	
+	public void setTagPanel(TagPanel tP){
+			this.tagPanel = tP;
+	}
+	
+	public void setSlider(JSlider jS){
+			this.jSlider = jS;
+	}
+
+
+	public void moveSlider(int buttonNumber){
+		if(tagPanel.tags[buttonNumber-1] != null){
+			jSlider.setValue(tagPanel.tags[buttonNumber-1].slidePosition);	
+		}
 	}
 
 }

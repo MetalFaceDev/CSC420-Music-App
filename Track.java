@@ -5,8 +5,8 @@ public class Track{
 	String artist;
 	String title;
 	String album;
-	String totalTime; //To be changed to clock time
-	String currentTime; //To be changed to clock time 
+	int totalTime; //To be changed to clock time
+	int currentTime; //To be changed to clock time 
 
 	int fBLikes; //counter for "Likes" recieved from facebook
 
@@ -16,6 +16,8 @@ public class Track{
 		this.title = title;
 
 	}
+
+	
 
 	//Constructor for track with a track artist and a title
 	public Track(String artist, String title){
@@ -31,6 +33,15 @@ public class Track{
 	public void addLike(){
 		//Recieves information from facebook and adds fBLikes counter 
 
+	}
+
+	public String timeToString(){
+		String minutes, seconds, stringTime = 0;
+		minutes = currentTime / 60;
+		seconds = currentTime % 60;
+		stringTime = minutes + ":" + seconds;
+		return stringTime;
+		
 	}
 
 }
