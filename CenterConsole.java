@@ -12,11 +12,11 @@ class CenterConsole extends JPanel {
   JButton setTagButton; //button to set tag
   JLabel timeNowLabel; //shows current time in track
   JLabel totTimeLabel; //shows total time in track
-  JProgressBar trackTimeBar; //shows current time position in song
+  JSlider trackTimeSlider; //shows current time position in song
   //trackTime can maybe be a JSlider
 
-  JPanel tagButtonPanel; //holds buttons for tags
-  JPanel tagPanel; //holds the visual tags
+  TagButtonPanel tagButtonPanel; //holds buttons for tags
+  TagPanel tagPanel; //holds the visual tags
   JButton tagButton1;
   JButton tagButton2;
   JButton tagButton3;
@@ -24,6 +24,7 @@ class CenterConsole extends JPanel {
   JButton tagButton5;
   JButton tagButton6;
   JButton tabRemoveButton;
+	Track currentTrack;
 
   public CenterConsole() {
 
@@ -34,19 +35,23 @@ class CenterConsole extends JPanel {
     Dimension size = new Dimension(400,150); //dimension of panel
     this.setPreferredSize(size); //set size of panel
 
-    this.setBackground(Color.BLACK);
   }
 
 	public void initComponents(){
-		artistLabel = new JLabel("Artist");
-		titleLabel = new JLabel("Title");
-		albumLabel = new JLabel("Album");
+		artistLabel = new JLabel("P.O.S.");
+		titleLabel = new JLabel("Optimist");
+		albumLabel = new JLabel("Never Better");
 		setTagButton = new JButton("Tag");
 		timeNowLabel = new JLabel("0:00");
-		totTimeLabel = new JLabel("0:00");
-		trackTimeBar = new JProgressBar(0,0); //initializes JProgressBar to 0 until a track is linked up
+		totTimeLabel = new JLabel("2:30");
+		trackTimeSlider = new JSlider(0,100); //initializes JProgressBar to 0 until a track is linked up
+		trackTimeSlider.setValue(0);
 		tagButtonPanel = new TagButtonPanel();
-		tagPanel = new JPanel();
+		tagPanel = new TagPanel();
+		tagPanel.setSize(trackTimeSlider.getWidth(),15);
+		tagPanel.setBackground(Color.WHITE);	
+		tagButtonPanel.setTagPanel(tagPanel);
+		tagButtonPanel.setSlider(trackTimeSlider);
 		GridBagConstraints c = new GridBagConstraints();
 
 	//add artistLabel
@@ -87,14 +92,14 @@ class CenterConsole extends JPanel {
 		c.weightx = .2;
 		this.add(timeNowLabel,c);
 
-	//add trackTimeBar
+	//add trackTimeSlider
 		c.gridx = 1;
 		c.gridy = 3;
 		c.gridwidth = 3;
 		c.gridheight = 1;
 		c.weightx = .6;
 		c.fill = GridBagConstraints.HORIZONTAL;
-		this.add(trackTimeBar,c);
+		this.add(trackTimeSlider,c);
 
 	//add totTimeLabel
 		c.gridx = 4;
@@ -110,7 +115,8 @@ class CenterConsole extends JPanel {
 			c.gridheight = 1;
 			c.weightx = .6;
 			c.gridwidth = 3;
-
+			Insets padding = new Insets(0,15,0,15);
+			c.insets = padding;
 			c.fill = GridBagConstraints.HORIZONTAL;
 			this.add(tagPanel,c);
 
@@ -123,21 +129,21 @@ class CenterConsole extends JPanel {
 		c.fill = GridBagConstraints.HORIZONTAL;
 		this.add(tagButtonPanel,c);
 
-	//adds listeners to CenterContent
+	//adds listeners to CenterConsole
 
 		setTagButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//tag the current point in the track
-				postTag();
+				//tag the current point in the tracki
+				tagPanel.addTag(trackTimeSlider.getValue(), trackTimeSlider.getValue());
 			}
 		});
 
-		trackTimeBar.addChangeListener(new ChangeListener(){
+		trackTimeSlider.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e){
 				//updates timeNowLabel as track progresses
-				//timeNowLabel.setText(trackTimeBar.toValue().toString());
-				//timeNowLabel = trackTimeBar.getValue();
-
+				//timeNowLabel.setText(trackTimeSlider.toValue().toString());
+				//timeNowLabel = trackTimeSlider.getValue();
+					
 			}
 		});
 
@@ -145,6 +151,8 @@ class CenterConsole extends JPanel {
 	}
 
 	public void changeCenterInfo(Track t){
+		currentTrack = t;
+		
 		titleLabel.setText(t.title);
 
 		if(t.artist != null){
@@ -158,13 +166,9 @@ class CenterConsole extends JPanel {
 		}else{
 			albumLabel.setText("");
 		}
-
+		
+		trackTimeSlider.setValue(t.totalTime);
 		//set totTimeLabel with the length of the track
-
-	}
-
-	public void postTag(){
-		//post tag at current time position of the track
 
 	}
 
