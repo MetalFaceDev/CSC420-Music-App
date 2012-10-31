@@ -31,6 +31,7 @@ public class SearchPanel extends JPanel implements MouseListener {
 			searchTextField.setSelectedTextColor(Color.gray);
 
 			searchButton = new JButton("Enter");
+                        searchButton.setToolTipText("Search");
 			setCollapseSearchVisible(false);
 
 			c.gridx = 0;

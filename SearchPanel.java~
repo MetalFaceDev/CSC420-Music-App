@@ -59,7 +59,7 @@ public class SearchPanel extends JPanel implements MouseListener {
 			c.gridy = 6;
 			this.add(searchButton);
 
-			searchTextField.addActionListener(this);
+			searchTextField.addMouseListener(this);
 
 
 		}
