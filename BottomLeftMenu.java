@@ -14,5 +14,5 @@ class BottomLeftMenu extends JPanel {
    leftMenu.setPreferredSize(new Dimension(100,410));
    this.add(leftMenu);
   }
-  
+
 }
