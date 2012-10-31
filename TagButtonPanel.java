@@ -20,71 +20,89 @@ public class TagButtonPanel extends JPanel{
 	TagPanel tagPanel;
 	JSlider jSlider;
 	int currentButtonNumber;
-
+	FlowLayout layout = new FlowLayout();
 
 	public TagButtonPanel(){
-		this.setLayout(new FlowLayout());
+		layout.setHgap(0);
+		this.setLayout(layout);
 		initComponents();
 		setBackground(Color.WHITE);
 		
 	}
 
 	public void initComponents(){
-		Dimension buttonSize = new Dimension(20,20);
+		Dimension buttonSize = new Dimension(30,30);
+		Font font = UIManager.getFont("Button.font");
+		int buttonStyle = font.getStyle();
 
+		//Insets inset = new Insets(20,20,20,20); 
+		
+		Font buttonFont = new Font("buttonFont",buttonStyle, 8); 
+	
 		tagButton1= new JButton("1");
-		tagButton1.setPreferredSize(buttonSize);
-		tagButton1.setBackground(Color.white);
+//		tagButton1.setPreferredSize(buttonSize);
 		tagButton1.setEnabled(false);
+		tagButton1.setFont(buttonFont);
+		tagButton1.setBorderPainted(false);
 		buttonArray[0] = tagButton1;
 		
 		tagButton2 = new JButton("2");
-		tagButton2.setPreferredSize(buttonSize);
+//		tagButton2.setPreferredSize(buttonSize);
 		tagButton2.setEnabled(false);
+		tagButton2.setFont(buttonFont);
 		buttonArray[1] = tagButton2;
 
 		tagButton3 = new JButton("3");
-		tagButton3.setPreferredSize(buttonSize);
+	//	tagButton3.setPreferredSize(buttonSize);
 		tagButton3.setEnabled(false);
+		tagButton3.setFont(buttonFont);
 		buttonArray[2] = tagButton3;
 
 		tagButton4 = new JButton("4");
-		tagButton4.setPreferredSize(buttonSize);
+		//tagButton4.setPreferredSize(buttonSize);
 		tagButton4.setEnabled(false);
+		tagButton4.setFont(buttonFont);
 		buttonArray[3] = tagButton4;
 
 		tagButton5 = new JButton("5");
-		tagButton5.setPreferredSize(buttonSize);
+	//	tagButton5.setPreferredSize(buttonSize);
 		tagButton5.setEnabled(false);
+		tagButton5.setFont(buttonFont);
 		buttonArray[4] = tagButton5;
 
 		tagButton6 = new JButton("6");
-		tagButton6.setPreferredSize(buttonSize);
+		//tagButton6.setPreferredSize(buttonSize);
 		tagButton6.setEnabled(false);
+		tagButton6.setFont(buttonFont);
 		buttonArray[5] = tagButton6;
 
 		tagButton7 = new JButton("7");
-		tagButton7.setPreferredSize(buttonSize);
+		//tagButton7.setPreferredSize(buttonSize);
 		tagButton7.setEnabled(false);
+		tagButton7.setFont(buttonFont);
 		buttonArray[6] = tagButton7;
 
 		tagButton8 = new JButton("8");
-		tagButton8.setPreferredSize(buttonSize);
+		//tagButton8.setPreferredSize(buttonSize);
 		tagButton8.setEnabled(false);
+		tagButton8.setFont(buttonFont);
 		buttonArray[7] = tagButton8;
 
 		tagButton9 = new JButton("9");
-		tagButton9.setPreferredSize(buttonSize);
+		//tagButton9.setPreferredSize(buttonSize);
 		tagButton9.setEnabled(false);
+		tagButton9.setFont(buttonFont);
 		buttonArray[8] = tagButton9;
 
 		tagButton10 = new JButton("10");
-		tagButton10.setPreferredSize(buttonSize);
+		//tagButton10.setPreferredSize(buttonSize);
 		tagButton10.setEnabled(false);
+		tagButton10.setFont(buttonFont);
 		buttonArray[9] = tagButton10;
 
 		removeButton = new JButton("R");
-		removeButton.setPreferredSize(buttonSize);
+		//removeButton.setPreferredSize(buttonSize);
+		removeButton.setFont(buttonFont);
 		buttonArray[10] = removeButton;
 
 		add(tagButton1);

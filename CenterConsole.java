@@ -17,14 +17,8 @@ class CenterConsole extends JPanel {
 
   TagButtonPanel tagButtonPanel; //holds buttons for tags
   TagPanel tagPanel; //holds the visual tags
-  JButton tagButton1;
-  JButton tagButton2;
-  JButton tagButton3;
-  JButton tagButton4;
-  JButton tagButton5;
-  JButton tagButton6;
-  JButton tabRemoveButton;
 	Track currentTrack;
+
 
   public CenterConsole() {
 
@@ -34,7 +28,7 @@ class CenterConsole extends JPanel {
     //set size
     Dimension size = new Dimension(400,150); //dimension of panel
     this.setPreferredSize(size); //set size of panel
-
+	
   }
 
 	public void initComponents(){
