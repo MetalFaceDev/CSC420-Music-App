@@ -57,7 +57,8 @@ class SharePanel extends JPanel implements ActionListener {
    gbc.gridy=3;
    gbag.setConstraints(search, gbc);
    search.setActionCommand("search");
-   this.add(search);
+    this.setBorder(BorderFactory.createEtchedBorder());
+   //this.add(search);
   }
   public void actionPerformed(ActionEvent e){
          if (e.getActionCommand().equals("Share")){

@@ -48,7 +48,7 @@ class Music implements ActionListener {
     topPanel.add(btnPanel);
     topPanel.add(infoDisplay);
 
-    topLeftPanel.setLayout(new FlowLayout());
+    topLeftPanel.setLayout(new VerticalLayout());
     topLeftPanel.add(sharePanel);
 
     p.setLayout(new FlowLayout());
