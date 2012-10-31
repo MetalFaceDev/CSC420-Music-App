@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-class SharePanel extends JPanel {
+class SharePanel extends JPanel implements ActionListener {
   JButton shareIt;
   JCheckBox autoShare;
   JLabel likesIcon;
@@ -13,18 +13,20 @@ class SharePanel extends JPanel {
   JTextField search;
   GridBagLayout gbag = new GridBagLayout();
   GridBagConstraints gbc = new GridBagConstraints();
+  FacebookFrame fb;
 
   SharePanel() {
    //setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
    //this.setLayout(new GridLayout(3,1)); //layout for panel
    this.setLayout(gbag); //layout for panel
-    
+
    shareIt = new JButton("Share");
    gbc.gridx =0;
    gbc.gridy =0;
    gbc.anchor = GridBagConstraints.NORTHWEST;
    gbag.setConstraints(shareIt, gbc);
    this.add(shareIt);
+   shareIt.addActionListener(this);
 
    autoShare = new JCheckBox("Auto-Share");
    gbc.gridx =0;
@@ -38,12 +40,12 @@ class SharePanel extends JPanel {
    likes = new JPanel();
    likes.setLayout(new FlowLayout());
    likes.add(likesIcon = new JLabel(likeThumb));
-   likes.add(likesHere = new JLabel("(Likes)"));
+   likes.add(likesHere = new JLabel("9 Likes"));
    gbc.gridx =0;
    gbc.gridy =2;
    gbag.setConstraints(likes, gbc);
    this.add(likes);
-   
+
    search = new JTextField(8);
    search.setText("Search..");
 /*   search.addMouseListener(new MouseListener(){
@@ -56,5 +58,10 @@ class SharePanel extends JPanel {
    gbag.setConstraints(search, gbc);
    search.setActionCommand("search");
    this.add(search);
+  }
+  public void actionPerformed(ActionEvent e){
+         if (e.getActionCommand().equals("Share")){
+            fb = new FacebookFrame();
+         }
   }
 }
