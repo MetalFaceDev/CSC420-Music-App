@@ -30,7 +30,7 @@ class Music implements ActionListener {
     topPanel = new JPanel();
 
     btnPanel = new ButtonControlPanel();
-    infoDisplay = new CenterConsole();
+    infoDisplay = CenterConsole.create();
     sharePanel = new SharePanel();
     collapse = new JButton("↑");
     collapse.setToolTipText("Switch to compact mode.");

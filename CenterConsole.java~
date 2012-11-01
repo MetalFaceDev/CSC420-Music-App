@@ -171,17 +171,21 @@ class CenterConsole extends JPanel {
 		//set totTimeLabel with the length of the track
 	}
 
-        public static void create() {
+        public static CenterConsole create() {
                    if (centerconsole == null) {
                        centerconsole = new CenterConsole();
                    }
                  return centerconsole;
 
         }
+
   public static CenterConsole getInstance() {
     return centerconsole;
   }
 
+   public void getNote(String note){
+
+   }
 }
 
 /*

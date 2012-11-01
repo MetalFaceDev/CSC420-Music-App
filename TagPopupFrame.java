@@ -49,6 +49,7 @@ class TagPopupFrame extends JFrame implements ActionListener{
 
       if (e.getActionCommand().equals("Add Note.")){
            String s = note.getText();
+           c.getNote(s);
       }
 
 

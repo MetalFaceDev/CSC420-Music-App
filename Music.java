@@ -19,7 +19,7 @@ class Music implements ActionListener {
 
 
   Music() {
-    frm = new JFrame("Music App");
+    frm = new JFrame("Music Player");
     //frm.setLayout(gbag);
     frm.setLayout(new VerticalLayout());
     frm.setSize(890,920);

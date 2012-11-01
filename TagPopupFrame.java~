@@ -11,7 +11,7 @@ class TagPopupFrame extends JFrame implements ActionListener{
     JTextArea note;
     JButton login;
     JButton cancel;
-    CenterConsole c = new CenterConsole();
+    CenterConsole c = CenterConsole.getInstance();
 
   TagPopupFrame(){
     this.setLayout(new VerticalLayout());

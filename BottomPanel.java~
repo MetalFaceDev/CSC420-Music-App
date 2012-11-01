@@ -15,7 +15,7 @@ class BottomPanel extends JPanel {
   String[] menuOptions = {"Music","Playlist"};
   String[] playlistOptions = {"next songs go here","Song1","Song2","Song3","Song4","anotherSong",
   "MoreSongs..","Song1","Song2","Song3","Song4","anotherSong","MoreSongs..","somemoremusic","anotheranotheranothersong","moremoremoremusic"};
-  private String[] tableHeaders = {"Track Title", "Artist", "Album"};
+  private String[] tableHeaders = {"Track Title", "Artist", "Album", "Likes"};
   private String[][] sampleTracks = {{"Time Leak","Analogtronics","Union"},
   {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
   {"Skipping Rocks","Oddisee","People See What They Hear"},{"Time Leak","Analogtronics","Union"},
@@ -66,7 +66,7 @@ class BottomPanel extends JPanel {
   		comp.setBackground(Color.white);
 
   	    } else {
-  		comp.setBackground(Color.lightGray);
+  		comp.setBackground( new Color (217, 217, 237));
   	    }  if (isCellSelected(Index_row, Index_col)) {
   	        comp.setBackground(Color.blue);
   	    }
