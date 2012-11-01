@@ -20,7 +20,7 @@ class CenterConsole extends JPanel {
 	Track currentTrack;
 
 
-  public CenterConsole() {
+  private CenterConsole() {
 
     setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
     setLayout(new GridBagLayout()); //set layout
@@ -30,6 +30,7 @@ class CenterConsole extends JPanel {
     this.setPreferredSize(size); //set size of panel
 
   }
+  private static CenterConsole centerconsole;
 
 	public void initComponents(){
 		artistLabel = new JLabel("Analogtronics");
@@ -169,6 +170,17 @@ class CenterConsole extends JPanel {
 		trackTimeSlider.setValue(t.totalTime);
 		//set totTimeLabel with the length of the track
 	}
+
+        public static CenterConsole create() {
+                   if (centerconsole == null) {
+                       centerconsole = new CenterConsole();
+                   }
+                 return centerconsole;
+
+        }
+  public static CenterConsole getInstance() {
+    return centerconsole;
+  }
 
 }
 

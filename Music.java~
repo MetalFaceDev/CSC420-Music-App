@@ -33,6 +33,7 @@ class Music implements ActionListener {
     infoDisplay = new CenterConsole();
     sharePanel = new SharePanel();
     collapse = new JButton("↑");
+    collapse.setToolTipText("Switch to compact mode.");
     topLeftPanel = new JPanel();
     JPanel p = new JPanel();
     bottomPanel = new BottomPanel();
@@ -81,17 +82,18 @@ class Music implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     if (e.getActionCommand().equals("↑")) {
       frm.remove(bottomPanel);
-			searchPanel.setCollapseSearchVisible(true);
+      searchPanel.setCollapseSearchVisible(true);
       frm.pack();
       collapse.setText("↓");
-
+    collapse.setToolTipText("Switch to full mode.");
     }
     else if (e.getActionCommand().equals("↓")) {
       gbc.gridx =0;
       gbc.gridy = 1;
       gbag.setConstraints(bottomPanel, gbc);
       frm.add(bottomPanel);
-			searchPanel.setCollapseSearchVisible(false);
+      searchPanel.setCollapseSearchVisible(false);
+      collapse.setToolTipText("Switch to compact mode.");
       frm.pack();
       collapse.setText("↑");
     }
