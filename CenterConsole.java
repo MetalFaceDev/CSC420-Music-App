@@ -28,7 +28,7 @@ class CenterConsole extends JPanel {
     //set size
     Dimension size = new Dimension(400,150); //dimension of panel
     this.setPreferredSize(size); //set size of panel
-	
+
   }
 
 	public void initComponents(){
@@ -43,7 +43,7 @@ class CenterConsole extends JPanel {
 		tagButtonPanel = new TagButtonPanel();
 		tagPanel = new TagPanel();
 		//tagPanel.setSize(trackTimeSlider.getWidth(),100);
-		tagPanel.setBackground(Color.WHITE);	
+		tagPanel.setBackground(Color.WHITE);
 		tagButtonPanel.setTagPanel(tagPanel);
 		tagButtonPanel.setSlider(trackTimeSlider);
 		tagPanel.setTagButtonPanel(tagButtonPanel);
@@ -132,6 +132,8 @@ class CenterConsole extends JPanel {
 			public void actionPerformed(ActionEvent e){
 				//tag the current point in the tracki
 				tagPanel.addTag(trackTimeSlider.getValue(), trackTimeSlider.getValue());
+                                TagPopupFrame f = new TagPopupFrame();
+                                f.setVisible(true);
 			}
 		});
 
@@ -140,7 +142,7 @@ class CenterConsole extends JPanel {
 				//updates timeNowLabel as track progresses
 				//timeNowLabel.setText(trackTimeSlider.toValue().toString());
 				//timeNowLabel = trackTimeSlider.getValue();
-					
+
 			}
 		});
 
@@ -149,7 +151,7 @@ class CenterConsole extends JPanel {
 
 	public void changeCenterInfo(Track t){
 		currentTrack = t;
-		
+
 		titleLabel.setText(t.title);
 
 		if(t.artist != null){
@@ -163,10 +165,9 @@ class CenterConsole extends JPanel {
 		}else{
 			albumLabel.setText("");
 		}
-		
+
 		trackTimeSlider.setValue(t.totalTime);
 		//set totTimeLabel with the length of the track
-
 	}
 
 }

@@ -11,6 +11,7 @@ class TagPopupFrame extends JFrame implements ActionListener{
     JTextArea note;
     JButton login;
     JButton cancel;
+    CenterConsole c = new CenterConsole();
 
   TagPopupFrame(){
     this.setLayout(new VerticalLayout());
@@ -18,7 +19,7 @@ class TagPopupFrame extends JFrame implements ActionListener{
     panel.setLayout(new FlowLayout());
     this.setSize(330,150);
 
-    text = new JLabel("Add a note?");
+    JLabel text = new JLabel("Add a note?");
     panel.add(text);
 
     loginPanel = new JPanel();
@@ -42,7 +43,15 @@ class TagPopupFrame extends JFrame implements ActionListener{
   }
 
   public void actionPerformed(ActionEvent e) {
-     if (e.getActionCommand().equals("Cancel"))
+     if (e.getActionCommand().equals("No Note, Just Tag.")){
 	     this.setVisible(false);
+      }
+
+      if (e.getActionCommand().equals("Add Note.")){
+
+      }
+
+
+
   }
 }
