@@ -73,20 +73,32 @@ final JPopupMenu popup;
   	    }
   	    return comp;
   	  }
+       public boolean isCellEditable(int rowIndex, int colIndex) {
+           return false;   //Disallow the editing of any cell
+       }
    };
-
-    //DefaultCellEditor dce = library.getDefaultEditor(Object.class);
-    //Component editor = dce.getComponent();
-    //editor.addMouseListener(...);
 
     library.setColumnSelectionAllowed(false);
     library.setShowHorizontalLines(true);
     popup = new JPopupMenu();
+    JMenuItem edit = new JMenuItem("Rename");
+
+//menu actionlistener
+    edit.addActionListener(new ActionListener(){
+    public void actionPerformed(ActionEvent e) {
+      if (e.getActionCommand().equals("Rename")){
+      TagPopupFrame f = new TagPopupFrame();
+      f.setVisible(true);}
+       }
+    });
+
+
+
     popup.add(new JMenuItem("Play"));
-    popup.add(new JMenuItem("Rename"));
+    popup.add(edit);
     popup.add(new JMenuItem("Add to Playlist"));
     popup.add(new JMenuItem("Delete"));
-
+//JTable right-click popup menu section
     library.addMouseListener(new MouseAdapter(){
      public void mouseClicked(MouseEvent e){
         if(SwingUtilities.isRightMouseButton(e) == true) { 
@@ -99,7 +111,6 @@ final JPopupMenu popup;
                 source.changeSelection(row, column, false, false);
 
             popup.show(e.getComponent(), e.getX(), e.getY());
-        
          } 
        }
      });
