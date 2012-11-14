@@ -1,3 +1,12 @@
+====Tue Nov 13 13:14:34 EST 2012  delvison
+--Things to do
+	--Make track browser a JLabel
+	--Move track Browser and searchbar
+	--Implement music playing capabilities
+	--Implement colorscheme
+	--make library draggable into the playlist
+	--fix bottom panels menu (maybe buttons or tabs instead?)
+	--put search and track browser on a JToolbar	
 
 =====Tue Oct 23 14:35:15 EDT 2012
 --SwingX library has JXMultiSplitPane class which allows you to create any layouts of resizable panels.

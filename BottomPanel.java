@@ -12,6 +12,7 @@ class BottomPanel extends JPanel {
   JList leftMenu;
   JList playlist;
   JTable library;
+final JPopupMenu popup;
   String[] menuOptions = {"Music","Playlist"};
   String[] playlistOptions = {"next songs go here","Song1","Song2","Song3","Song4","anotherSong",
   "MoreSongs..","Song1","Song2","Song3","Song4","anotherSong","MoreSongs..","somemoremusic","anotheranotheranothersong","moremoremoremusic"};
@@ -74,6 +75,34 @@ class BottomPanel extends JPanel {
   	  }
    };
 
+    //DefaultCellEditor dce = library.getDefaultEditor(Object.class);
+    //Component editor = dce.getComponent();
+    //editor.addMouseListener(...);
+
+    library.setColumnSelectionAllowed(false);
+    library.setShowHorizontalLines(true);
+    popup = new JPopupMenu();
+    popup.add(new JMenuItem("Play"));
+    popup.add(new JMenuItem("Rename"));
+    popup.add(new JMenuItem("Add to Playlist"));
+    popup.add(new JMenuItem("Delete"));
+
+    library.addMouseListener(new MouseAdapter(){
+     public void mouseClicked(MouseEvent e){
+        if(SwingUtilities.isRightMouseButton(e) == true) { 
+       // if (e.isPopupTrigger()){
+            JTable source = (JTable)e.getSource();
+            int row = source.rowAtPoint( e.getPoint() );
+            int column = source.columnAtPoint( e.getPoint() );
+
+            if (! source.isRowSelected(row))
+                source.changeSelection(row, column, false, false);
+
+            popup.show(e.getComponent(), e.getX(), e.getY());
+        
+         } 
+       }
+     });
 
     JScrollPane lib = new JScrollPane(library);
     //lib.setPreferredSize(new Dimension(600,400));
@@ -88,25 +117,6 @@ class BottomPanel extends JPanel {
     JPanel top = new JPanel();
     top.add(b);
     libraryAndPlaylist = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, menuPane, top);
-
-    //leftMenu.setMaximumSize(new Dimension(1000,1000));
-
-    //leftMenu.addMouseListener(mouseListener); //add a mouse listener
-    //playList.addMouseListener(mouseListener2); //add a mouse listener
     this.add(libraryAndPlaylist);
   }
-
-  /*
-   MouseListener mouseListener = new MouseAdapter() {
-     public void mouseClicked(MouseEvent e) {
-         if (e.getClickCount() == 2) {
-             int index = list.locationToIndex(e.getPoint());
-             System.out.println("Double clicked on Item " + index);
-          }
-     }
- };
- list.addMouseListener(mouseListener);
-  */
-
-
 }
