@@ -12,6 +12,8 @@ class BottomPanel extends JPanel {
   JList leftMenu;
   JList playlist;
   JTable library;
+  int cellX;
+  int cellY;
 final JPopupMenu popup;
   String[] menuOptions = {"Music","Playlist"};
   String[] playlistOptions = {"next songs go here","Song1","Song2","Song3","Song4","anotherSong",
@@ -74,7 +76,7 @@ final JPopupMenu popup;
   	    return comp;
   	  }
        public boolean isCellEditable(int rowIndex, int colIndex) {
-           return false;   //Disallow the editing of any cell
+           return true;   //Disallow the editing of any cell
        }
    };
 
@@ -87,8 +89,11 @@ final JPopupMenu popup;
     edit.addActionListener(new ActionListener(){
     public void actionPerformed(ActionEvent e) {
       if (e.getActionCommand().equals("Rename")){
-      TagPopupFrame f = new TagPopupFrame();
-      f.setVisible(true);}
+      //TagPopupFrame f = new TagPopupFrame();
+      library.editCellAt(cellX,cellY);
+      //f.setVisible(true);
+      
+      }
        }
     });
 
@@ -107,10 +112,12 @@ final JPopupMenu popup;
             int row = source.rowAtPoint( e.getPoint() );
             int column = source.columnAtPoint( e.getPoint() );
 
-            if (! source.isRowSelected(row))
+            if (! source.isRowSelected(row)){
                 source.changeSelection(row, column, false, false);
-
+            }
+ 	    getMousePos(row,column);
             popup.show(e.getComponent(), e.getX(), e.getY());
+           
          } 
        }
      });
@@ -129,5 +136,10 @@ final JPopupMenu popup;
     top.add(b);
     libraryAndPlaylist = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, menuPane, top);
     this.add(libraryAndPlaylist);
+  }
+
+  public void getMousePos(int x, int y) {
+    cellX = x;
+    cellY = y;
   }
 }
