@@ -36,7 +36,7 @@ class Music implements ActionListener {
     collapse.setToolTipText("Switch to compact mode.");
     topLeftPanel = new JPanel();
     JPanel p = new JPanel();
-    bottomPanel = new BottomPanel();
+    bottomPanel = BottomPanel.create();
 
 
 //TOP PANEL STUFF HERE --->

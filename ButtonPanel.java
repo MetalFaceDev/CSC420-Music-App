@@ -3,7 +3,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-class ButtonControlPanel extends JPanel {
+class ButtonPanel extends JPanel {
  JButton play; //play button
  JButton rewind; //rewind button
  JButton fastForward; //fast forward button
@@ -12,7 +12,7 @@ class ButtonControlPanel extends JPanel {
  JSlider volumeSlider; //controls volume
  JLabel volString;
 
- ButtonControlPanel() {
+ ButtonPanel() {
     //setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
    // this.setLayout(new GridLayout(2,3)); //layout for panel
     this.setLayout(new FlowLayout());
