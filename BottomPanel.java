@@ -57,11 +57,15 @@ final JPopupMenu popup;
     //menuPane.setPreferredSize(new Dimension(65,400));
     menuPane.setBorder(BorderFactory.createEtchedBorder());
 
+    //create playlist jlist
     listmodel = new DefaultListModel();
     playlist = new JList(listmodel);
     JPanel playBar = new JPanel();
     playBar.setLayout(new VerticalLayout());
     playBar.add(new JLabel("Current Playlist"));
+    playlist.setDropMode(DropMode.INSERT);
+
+    //create library jtable
     library = new JTable(sampleTracks,tableHeaders){
   	public Component prepareRenderer
   	  (TableCellRenderer renderer,int Index_row, int Index_col) {
@@ -69,7 +73,6 @@ final JPopupMenu popup;
   	    //even index, selected or not selected
   	    if (Index_row % 2 == 0 && !isCellSelected(Index_row, Index_col)) {
   		comp.setBackground(Color.white);
-
   	    } else {
   		comp.setBackground( new Color (217, 217, 237));
   	    }  if (isCellSelected(Index_row, Index_col)) {
@@ -81,10 +84,11 @@ final JPopupMenu popup;
            return true;   //Disallow the editing of any cell
        }
    };
-
     library.setColumnSelectionAllowed(false);
     library.setShowHorizontalLines(true);
-    
+    library.setDragEnabled(true);
+    //library.setTransferHandler(new TransferHandler("text"));
+    TransferHandler t = library.getTransferHandler(); 
     //create jpopupmenu
     popup = new JPopupMenu();
     JMenuItem edit = new JMenuItem("Rename");
@@ -102,7 +106,8 @@ final JPopupMenu popup;
       }
        }
     });
-    
+
+    //actionlistener for adding to playlist   
     add.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Add to Playlist")){
@@ -161,11 +166,13 @@ final JPopupMenu popup;
     this.add(libraryAndPlaylist);
   }
 
+  //gets the position of the mouse
   public void getMousePos(int x, int y) {
     cellX = x;
     cellY = y;
   }
 
+  //gets the selected track in the library jtable
   public String getSelectedTrack() {
     //get the row index
     int selectedRowIndex = library.getSelectedRow(); 
@@ -174,6 +181,7 @@ final JPopupMenu popup;
     return selectedObject;
   }
 
+  //create the instance of this bottom panel
   public static BottomPanel create() {
     if (bottompanel == null) {
 	    bottompanel = new BottomPanel();
