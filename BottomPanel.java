@@ -6,8 +6,9 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.table.*;
 
-
 class BottomPanel extends JPanel {
+  private DefaultListModel listmodel;
+  private static BottomPanel bottompanel;
   JScrollPane libraryPane;
   JList leftMenu;
   JList playlist;
@@ -41,7 +42,7 @@ final JPopupMenu popup;
   //arraylist to hold track objects
   JSplitPane libraryAndPlaylist; //holds library and playlist jscrollpanes
 
-  BottomPanel() {
+  private BottomPanel() {
 	this.setBackground(Color.DARK_GRAY);
     leftMenu = new JList(menuOptions);
     leftMenu.setPreferredSize(new Dimension(65,400));
@@ -56,7 +57,8 @@ final JPopupMenu popup;
     //menuPane.setPreferredSize(new Dimension(65,400));
     menuPane.setBorder(BorderFactory.createEtchedBorder());
 
-    playlist = new JList(playlistOptions);
+    listmodel = new DefaultListModel();
+    playlist = new JList(listmodel);
     JPanel playBar = new JPanel();
     playBar.setLayout(new VerticalLayout());
     playBar.add(new JLabel("Current Playlist"));
@@ -82,28 +84,49 @@ final JPopupMenu popup;
 
     library.setColumnSelectionAllowed(false);
     library.setShowHorizontalLines(true);
+    
+    //create jpopupmenu
     popup = new JPopupMenu();
     JMenuItem edit = new JMenuItem("Rename");
+    JMenuItem play = new JMenuItem("Play");
+    JMenuItem add = new JMenuItem("Add to Playlist");
+    JMenuItem delete = new JMenuItem("Delete");
 
-//menu actionlistener
+    //actionlistener for edit
     edit.addActionListener(new ActionListener(){
     public void actionPerformed(ActionEvent e) {
       if (e.getActionCommand().equals("Rename")){
-      //TagPopupFrame f = new TagPopupFrame();
-      library.editCellAt(cellX,cellY);
-      //f.setVisible(true);
-      
+        //TagPopupFrame f = new TagPopupFrame();
+        library.editCellAt(cellX,cellY);
+        //f.setVisible(true);
       }
        }
     });
+    
+    add.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("Add to Playlist")){
+	 String trak = getSelectedTrack();
+	 addToList(trak);
+	}
+      }
+    });
 
+    delete.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("Delete")){
+	  removeFromTable();
+	}
+      }
+    });
 
-
-    popup.add(new JMenuItem("Play"));
+    //add jmenuitems to rightclick popup
+    popup.add(play);
+    popup.add(add);
     popup.add(edit);
-    popup.add(new JMenuItem("Add to Playlist"));
-    popup.add(new JMenuItem("Delete"));
-//JTable right-click popup menu section
+    popup.add(delete);
+    
+    //JTable right-click popup menu section
     library.addMouseListener(new MouseAdapter(){
      public void mouseClicked(MouseEvent e){
         if(SwingUtilities.isRightMouseButton(e) == true) { 
@@ -141,5 +164,34 @@ final JPopupMenu popup;
   public void getMousePos(int x, int y) {
     cellX = x;
     cellY = y;
+  }
+
+  public String getSelectedTrack() {
+    //get the row index
+    int selectedRowIndex = library.getSelectedRow(); 
+    String selectedObject = (String) library.getModel().getValueAt(selectedRowIndex, 0);
+    selectedObject = selectedObject+" - "+(String) library.getModel().getValueAt(selectedRowIndex, 1);
+    return selectedObject;
+  }
+
+  public static BottomPanel create() {
+    if (bottompanel == null) {
+	    bottompanel = new BottomPanel();
+    }
+    return bottompanel;
+  }
+
+  public static BottomPanel getInstance() {
+    return bottompanel;
+  }
+
+  private void addToList(String song) {
+    listmodel.addElement(song);
+  }
+
+  private void removeFromTable() {
+    int selectedRowIndex = library.getSelectedRow(); 
+    DefaultTableModel t = (DefaultTableModel) library.getModel();
+    t.removeRow(selectedRowIndex);
   }
 }
