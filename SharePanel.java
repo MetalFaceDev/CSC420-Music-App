@@ -19,7 +19,7 @@ class SharePanel extends JPanel implements ActionListener {
    //setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
    //this.setLayout(new GridLayout(3,1)); //layout for panel
    this.setLayout(gbag); //layout for panel
-
+   this.setBackground(Color.DARK_GRAY);
    shareIt = new JButton("Share");
    gbc.gridx =0;
    gbc.gridy =0;
@@ -40,6 +40,8 @@ class SharePanel extends JPanel implements ActionListener {
    //here i compacted the "likes" stuff into a jpanel to fit it in same cell
    ImageIcon likeThumb = new ImageIcon("img/like.gif");
    likes = new JPanel();
+   likes.setBackground(Color.DARK_GRAY);
+	
    likes.setLayout(new FlowLayout());
    likes.add(likesIcon = new JLabel(likeThumb));
    likes.add(likesHere = new JLabel("9 Likes"));

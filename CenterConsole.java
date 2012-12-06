@@ -28,9 +28,11 @@ class CenterConsole extends JPanel {
     //set size
     Dimension size = new Dimension(400,150); //dimension of panel
     this.setPreferredSize(size); //set size of panel
+	this.setBackground(Color.DARK_GRAY);
 
   }
   private static CenterConsole centerconsole;
+  	
 
 	public void initComponents(){
 		artistLabel = new JLabel("Analogtronics");
@@ -44,7 +46,7 @@ class CenterConsole extends JPanel {
 		tagButtonPanel = new TagButtonPanel();
 		tagPanel = new TagPanel();
 		//tagPanel.setSize(trackTimeSlider.getWidth(),100);
-		tagPanel.setBackground(Color.WHITE);
+		tagPanel.setBackground(Color.LIGHT_GRAY);
 		tagButtonPanel.setTagPanel(tagPanel);
 		tagButtonPanel.setSlider(trackTimeSlider);
 		tagPanel.setTagButtonPanel(tagButtonPanel);

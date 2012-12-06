@@ -43,7 +43,7 @@ final JPopupMenu popup;
   JSplitPane libraryAndPlaylist; //holds library and playlist jscrollpanes
 
   private BottomPanel() {
-
+	this.setBackground(Color.DARK_GRAY);
     leftMenu = new JList(menuOptions);
     leftMenu.setPreferredSize(new Dimension(65,400));
     leftMenu.setBorder(BorderFactory.createEtchedBorder());

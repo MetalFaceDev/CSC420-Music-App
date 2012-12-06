@@ -11,6 +11,7 @@ public class SearchPanel extends JPanel implements MouseListener {
 
 		public SearchPanel(){
 			super();
+			this.setBackground(Color.DARK_GRAY);
 			initComponents();
 		}
 
