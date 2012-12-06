@@ -21,12 +21,14 @@ public class TagButtonPanel extends JPanel{
 	JSlider jSlider;
 	int currentButtonNumber;
 	FlowLayout layout = new FlowLayout();
+	ImageIcon disabledTag;
+	ImageIcon enabledTag;
 
 	public TagButtonPanel(){
 		layout.setHgap(0);
 		this.setLayout(layout);
 		initComponents();
-		setBackground(Color.WHITE);
+		setBackground(Color.LIGHT_GRAY);
 		
 	}
 
@@ -35,24 +37,37 @@ public class TagButtonPanel extends JPanel{
 		Font font = UIManager.getFont("Button.font");
 		int buttonStyle = font.getStyle();
 
+		disabledTag = new ImageIcon("img/disabled_tag_background.png");
+		enabledTag = new ImageIcon("img/enabled_tag_background.png");
 		//Insets inset = new Insets(20,20,20,20); 
 		
 		Font buttonFont = new Font("buttonFont",buttonStyle, 8); 
 	
 		tagButton1= new JButton("1");
+//		tagButton1.setIcon(disabledTag);
+//		tagButton1.setOpaque(false);
+//		tagButton1.setContentAreaFilled(false);
+//		tagButton1.setBorderPainted(false);
 //		tagButton1.setPreferredSize(buttonSize);
 		tagButton1.setEnabled(false);
 		tagButton1.setFont(buttonFont);
-		tagButton1.setBorderPainted(false);
 		buttonArray[0] = tagButton1;
 		
 		tagButton2 = new JButton("2");
+//		tagButton2.setIcon(disabledTag);
+//		tagButton2.setOpaque(false);
+//		tagButton2.setContentAreaFilled(false);
+//		tagButton2.setBorderPainted(false);
 //		tagButton2.setPreferredSize(buttonSize);
 		tagButton2.setEnabled(false);
 		tagButton2.setFont(buttonFont);
 		buttonArray[1] = tagButton2;
 
 		tagButton3 = new JButton("3");
+//		tagButton3.setIcon(disabledTag);
+//		tagButton3.setOpaque(false);
+//		tagButton3.setContentAreaFilled(false);
+//		tagButton3.setBorderPainted(false);
 	//	tagButton3.setPreferredSize(buttonSize);
 		tagButton3.setEnabled(false);
 		tagButton3.setFont(buttonFont);

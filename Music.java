@@ -22,11 +22,12 @@ class Music implements ActionListener {
     frm = new JFrame("Music Player");
     //frm.setLayout(gbag);
     frm.setLayout(new VerticalLayout());
+	frm.setBackground(Color.DARK_GRAY);
     frm.setSize(890,920);
-    //frm.setMinimumSize();
+	frm.getContentPane().setBackground(Color.DARK_GRAY); 
+   //frm.setMinimumSize();
    // frm.setResizable(false);
     frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     topPanel = new JPanel();
 
     btnPanel = new ButtonControlPanel();
@@ -41,11 +42,12 @@ class Music implements ActionListener {
 
 //TOP PANEL STUFF HERE --->
     topPanel.setLayout(new FlowLayout());
-    infoDisplay.setBackground(Color.white);
+	topPanel.setBackground(Color.DARK_GRAY);
+
+    infoDisplay.setBackground(Color.LIGHT_GRAY);
 
     collapse.setPreferredSize(new Dimension(60, 30));
     collapse.addActionListener(this);
-
     topPanel.add(btnPanel);
     topPanel.add(infoDisplay);
 
@@ -53,6 +55,7 @@ class Music implements ActionListener {
     topLeftPanel.add(sharePanel);
 
     p.setLayout(new FlowLayout());
+	p.setBackground(Color.DARK_GRAY);
     p.add(collapse);
     topLeftPanel.add(p);
     topPanel.add(topLeftPanel);
