@@ -4,15 +4,18 @@ import java.awt.event.*;
 
 public class SearchPanel extends JPanel implements MouseListener {
 		JTextField searchTextField;
-		JTextField trackSelection;
+		JLabel trackSelection;
 		JButton backButton;
 		JButton forwardButton;
 		JButton searchButton;
+		String[] quickSearchArray;
 
 		public SearchPanel(){
 			super();
 			this.setBackground(Color.DARK_GRAY);
 			initComponents();
+			BottomPanel bP = BottomPanel.getInstance();
+			quickSearchArray = bP.playlist.SelectedValues;
 		}
 
 		private void initComponents(){
@@ -21,7 +24,9 @@ public class SearchPanel extends JPanel implements MouseListener {
 
 			backButton = new JButton("<");
 
-			trackSelection = new JTextField(13);
+			trackSelection = new JLabel();
+			Dimension labelSize = new Dimension(150,50);
+			trackSelection.setPreferredSize(labelSize);
 			trackSelection.setText("Next Track");
 
 			forwardButton = new JButton(">");
@@ -32,7 +37,7 @@ public class SearchPanel extends JPanel implements MouseListener {
 			searchTextField.setSelectedTextColor(Color.gray);
 
 			searchButton = new JButton("Enter");
-                        searchButton.setToolTipText("Search");
+            searchButton.setToolTipText("Search");
 			setCollapseSearchVisible(false);
 
 			c.gridx = 0;

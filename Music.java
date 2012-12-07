@@ -11,7 +11,7 @@ class Music implements ActionListener {
  JTextField search; //search textbox
  JButton collapse; //switches interface from full to compact
  JPanel topPanel;
- JPanel topLeftPanel; //holds sharepanel and collapse btn
+ JPanel topRightPanel; //holds sharepanel and collapse btn
  BottomPanel bottomPanel;
  GridBagLayout gbag = new GridBagLayout();
  GridBagConstraints gbc = new GridBagConstraints();
@@ -35,7 +35,7 @@ class Music implements ActionListener {
     sharePanel = new SharePanel();
     collapse = new JButton("↑");
     collapse.setToolTipText("Switch to compact mode.");
-    topLeftPanel = new JPanel();
+    topRightPanel = new JPanel();
     JPanel p = new JPanel();
     bottomPanel = BottomPanel.create();
 
@@ -51,14 +51,15 @@ class Music implements ActionListener {
     topPanel.add(btnPanel);
     topPanel.add(infoDisplay);
 
-    topLeftPanel.setLayout(new VerticalLayout());
-    topLeftPanel.add(sharePanel);
+    topRightPanel.setLayout(new VerticalLayout());
+    topRightPanel.add(sharePanel);
 
     p.setLayout(new FlowLayout());
 	p.setBackground(Color.DARK_GRAY);
     p.add(collapse);
-    topLeftPanel.add(p);
-    topPanel.add(topLeftPanel);
+    topRightPanel.add(p);
+    topPanel.add(topRightPanel);
+	topRightPanel.setBackground(Color.DARK_GRAY);
 
     //gbc.gridx =0;
     //gbc.gridy =0;
