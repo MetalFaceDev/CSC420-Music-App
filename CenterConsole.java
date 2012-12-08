@@ -188,4 +188,12 @@ class CenterConsole extends JPanel {
    public void getNote(String n){
           String note = n;
    }
+
+   public void setPlaySong() {
+     BottomPanel b = BottomPanel.getInstance();
+     String[] info = b.getSongToPlay();
+     titleLabel.setText(info[0]);
+     artistLabel.setText(info[1]);
+     albumLabel.setText(info[2]);
+   }
 }

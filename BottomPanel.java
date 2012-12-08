@@ -116,6 +116,16 @@ final JPopupMenu popup;
       }
        }
     });
+    
+    //actionlistener for play
+    play.addActionListener(new ActionListener(){
+    public void actionPerformed(ActionEvent e) {
+      if (e.getActionCommand().equals("Play")){
+       CenterConsole c = CenterConsole.getInstance();
+       c.setPlaySong();
+      }
+       }
+    });
 
     //actionlistener for adding to playlist   
     add.addActionListener(new ActionListener(){
@@ -227,5 +237,19 @@ libraryAndPlaylist.setUI(new BasicSplitPaneUI() {
     int selectedRowIndex = library.getSelectedRow(); 
     DefaultTableModel t = (DefaultTableModel) library.getModel();
     t.removeRow(selectedRowIndex);
+  }
+  
+  //returns an array of the song info selected
+  public String[] getSongToPlay() {
+    String[] info = new String[3];
+    int selectedRowIndex = library.getSelectedRow(); 
+    String song = (String) library.getModel().getValueAt(selectedRowIndex, 0);
+    String artist = (String) library.getModel().getValueAt(selectedRowIndex, 1);
+    String album = (String) library.getModel().getValueAt(selectedRowIndex, 2);
+    info[0] = song;
+    info[1] = artist;
+    info[2] = album;
+    
+    return info;
   }
 }
