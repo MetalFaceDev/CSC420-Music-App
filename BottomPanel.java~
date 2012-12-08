@@ -46,13 +46,10 @@ final JPopupMenu popup;
   JSplitPane libraryAndPlaylist; //holds library and playlist jscrollpanes
 
   private BottomPanel() {
-    //create leftmenu
+    //this.getContentPane().setBackground(Color.DARK_GRAY); 
     leftMenu = new JList(menuOptions);
     leftMenu.setPreferredSize(new Dimension(65,400));
     leftMenu.setBorder(BorderFactory.createEtchedBorder());
-    leftMenu.setBackground(new Color(235,235,235));
-    leftMenu.setForeground(Color.BLACK);
-
     JPanel menuLabel = new JPanel();
     //menuLabel.setPreferredSize(new Dimension(30,30));
     menuLabel.add(new JLabel("Menu"));
@@ -70,8 +67,6 @@ final JPopupMenu popup;
     playBar.setLayout(new VerticalLayout());
     playBar.add(new JLabel("Current Playlist"));
     playlist.setDropMode(DropMode.INSERT);
-    playlist.setBackground(new Color(235,235,235));
-    playlist.setForeground(Color.BLACK);
 
     //create library jtable
     library = new JTable(sampleTracks,tableHeaders){
@@ -82,9 +77,9 @@ final JPopupMenu popup;
   	    if (Index_row % 2 == 0 && !isCellSelected(Index_row, Index_col)) {
   		comp.setBackground(new Color(235,235,235));
   	    } else {
-  		comp.setBackground( new Color (204, 204, 204));
+  		comp.setBackground( new Color (130, 236, 226));
   	    }  if (isCellSelected(Index_row, Index_col)) {
-  	        comp.setBackground(new Color(7,66,60));
+  	        comp.setBackground(Color.blue);
   	    }
   	    return comp;
   	  }
@@ -97,8 +92,6 @@ final JPopupMenu popup;
     library.setDragEnabled(true);
     //library.setTransferHandler(new TransferHandler("text"));
     TransferHandler t = library.getTransferHandler(); 
-    library.setForeground(Color.BLACK);
-
     //create jpopupmenu
     popup = new JPopupMenu();
     JMenuItem edit = new JMenuItem("Rename");
@@ -181,15 +174,15 @@ libraryAndPlaylist.setUI(new BasicSplitPaneUI() {
 
                 @Override
                     public void paint(Graphics g) {
-                    g.setColor(Color.DARK_GRAY);
+                    g.setColor(Color.red);
                     g.fillRect(0, 0, getSize().width, getSize().height);
                         super.paint(g);
                     }
             };
             }
         });
-       // libraryAndPlaylist.setBorder(null);
-       
+        libraryAndPlaylist.setBorder(null);
+
   }
 
   //gets the position of the mouse

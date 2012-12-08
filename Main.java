@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import javax.swing.UIManager.*;
 
 class Main {
@@ -13,6 +14,10 @@ try {
 } catch (Exception e) {
     // If Nimbus is not available, you can set the GUI to another look and feel.
 }
+UIManager.put("nimbusBase", new Color(7,66,60));
+UIManager.put("control", Color.DARK_GRAY);
+UIManager.put("textForeground", Color.WHITE);
+
     SwingUtilities.invokeLater(new Runnable() {
       public void run() {
         new Music();
