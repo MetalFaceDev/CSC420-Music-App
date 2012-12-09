@@ -1,4 +1,4 @@
-//
+import java.io.*;
 
 public class Track{
 
@@ -9,6 +9,7 @@ public class Track{
 	int currentTime; //To be changed to clock time 
 
 	int fBLikes; //counter for "Likes" recieved from facebook
+	File trackLocation;
 
 	//Constructor for track with only one attribute
 	//Assigns attribute to title by default
@@ -16,7 +17,6 @@ public class Track{
 		this.title = title;
 
 	}
-
 	
 
 	//Constructor for track with a track artist and a title
@@ -28,6 +28,16 @@ public class Track{
 
 	public void setAttributes(){
 		//Allow other attributes to be set
+	}
+
+	public void setTrackLocation(String file){
+		try{
+			this.trackLocation = new File(file);
+			
+		}catch(NullPointerException e){
+			//catch IOException
+		}
+	
 	}
 
 	public void addLike(){

@@ -115,7 +115,10 @@ public class TagButtonPanel extends JPanel{
 		tagButton10.setFont(buttonFont);
 		buttonArray[9] = tagButton10;
 
-		removeButton = new JButton("R");
+		removeButton = new JButton();
+		ImageIcon removeTagIcon = new ImageIcon("img/remove_tag_icon.png");
+		removeButton.setIcon(removeTagIcon);
+		removeButton.setBackground(Color.DARK_GRAY);
 		//removeButton.setPreferredSize(buttonSize);
 		removeButton.setFont(buttonFont);
 		buttonArray[10] = removeButton;

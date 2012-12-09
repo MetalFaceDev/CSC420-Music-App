@@ -20,6 +20,8 @@ class SharePanel extends JPanel implements ActionListener {
    //this.setLayout(new GridLayout(3,1)); //layout for panel
    this.setLayout(gbag); //layout for panel
    this.setBackground(Color.DARK_GRAY);
+   Dimension size = new Dimension(150,100);
+   this.setPreferredSize(size);
    shareIt = new JButton("Share");
    gbc.gridx =0;
    gbc.gridy =0;

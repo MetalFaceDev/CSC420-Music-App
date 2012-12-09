@@ -16,7 +16,9 @@ class Music implements ActionListener {
  GridBagLayout gbag = new GridBagLayout();
  GridBagConstraints gbc = new GridBagConstraints();
  SearchPanel searchPanel;
-
+ ImageIcon collapseIcon;
+ ImageIcon expandIcon;
+ String[] quickSearchArray;
 
   Music() {
     frm = new JFrame("Music Player");
@@ -33,7 +35,14 @@ class Music implements ActionListener {
     btnPanel = new ButtonControlPanel();
     infoDisplay = CenterConsole.create();
     sharePanel = new SharePanel();
-    collapse = new JButton("↑");
+	
+	collapseIcon = new ImageIcon("img/collapse_icon.png");
+	expandIcon = new ImageIcon("img/expand_icon.png");    
+
+	collapse = new JButton(collapseIcon);
+    //collapse = new JButton("↑");
+	//collapse.setIcon(collapseIcon);
+	collapse.setActionCommand("collapse");
     collapse.setToolTipText("Switch to compact mode.");
     topRightPanel = new JPanel();
     JPanel p = new JPanel();
@@ -84,14 +93,16 @@ class Music implements ActionListener {
   }
 
   public void actionPerformed(ActionEvent e) {
-    if (e.getActionCommand().equals("↑")) {
+    if (e.getActionCommand().equals("collapse")) {
       frm.remove(bottomPanel);
       searchPanel.setCollapseSearchVisible(true);
       frm.pack();
-      collapse.setText("↓");
-    collapse.setToolTipText("Switch to full mode.");
+      collapse.setActionCommand("expand");
+      collapse.setToolTipText("Switch to full mode.");
+	  collapse.setIcon(expandIcon);
+	
     }
-    else if (e.getActionCommand().equals("↓")) {
+    else if (e.getActionCommand().equals("expand")) {
       gbc.gridx =0;
       gbc.gridy = 1;
       gbag.setConstraints(bottomPanel, gbc);
@@ -99,7 +110,8 @@ class Music implements ActionListener {
       searchPanel.setCollapseSearchVisible(false);
       collapse.setToolTipText("Switch to compact mode.");
       frm.pack();
-      collapse.setText("↑");
+      collapse.setActionCommand("collapse");
+	  collapse.setIcon(collapseIcon);
     }
   }
 }

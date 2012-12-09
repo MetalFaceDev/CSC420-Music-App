@@ -8,14 +8,15 @@ public class SearchPanel extends JPanel implements MouseListener {
 		JButton backButton;
 		JButton forwardButton;
 		JButton searchButton;
-		String[] quickSearchArray;
+		Object[] quickSearchArray;
+
+		JButton quickPlayButton;
 
 		public SearchPanel(){
 			super();
 			this.setBackground(Color.DARK_GRAY);
 			initComponents();
 			BottomPanel bP = BottomPanel.getInstance();
-			quickSearchArray = bP.playlist.SelectedValues;
 		}
 
 		private void initComponents(){
@@ -28,8 +29,12 @@ public class SearchPanel extends JPanel implements MouseListener {
 			Dimension labelSize = new Dimension(150,50);
 			trackSelection.setPreferredSize(labelSize);
 			trackSelection.setText("Next Track");
+			trackSelection.setHorizontalTextPosition(JLabel.CENTER);
 
 			forwardButton = new JButton(">");
+			
+			quickPlayButton = new JButton("Quick Play");
+			quickPlayButton.setVisible(false);
 
 			searchTextField = new JTextField(8);
 			searchTextField.setText("Search..");
@@ -55,6 +60,11 @@ public class SearchPanel extends JPanel implements MouseListener {
 			c.gridy = 0;
 			c.gridwidth = 1;
 			this.add(forwardButton);
+			
+			c.gridx = 4;
+			c.gridy = 0;
+			c.gridwidth = 1;
+			this.add(quickPlayButton);
 
 			c.gridx = 5;
 			c.gridy = 0;
@@ -76,10 +86,22 @@ public class SearchPanel extends JPanel implements MouseListener {
 					backButton.setVisible(true);
 					trackSelection.setVisible(true);
 					forwardButton.setVisible(true);
+					quickPlayButton.setVisible(true);
+					
+					searchTextField.setVisible(false);
+					searchButton.setVisible(false);
+					
+					//quickSearchArray = BottomPanel.getInstance().getPlaylistArray();
+					//trackSelection.setText(quickSearchArray[0].toString());  
+
 				}else{
 					backButton.setVisible(false);
 					trackSelection.setVisible(false);
 					forwardButton.setVisible(false);
+					quickPlayButton.setVisible(false);
+			
+					searchTextField.setVisible(true);
+					searchButton.setVisible(true);
 				}
 		}
 

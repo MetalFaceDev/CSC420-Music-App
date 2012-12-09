@@ -13,11 +13,14 @@ class ButtonControlPanel extends JPanel {
  JSlider volumeSlider; //controls volume
  JLabel volString;
  JLabel muteLabel, volumeFullLabel;;
- ImageIcon playIcon, fastForwardIcon, rewindIcon, repeatIcon, shuffleIcon, pauseIcon;
- ImageIcon hoverPlayIcon, hoverFastForwardIcon, hoverRewindIcon, hoverRepeatIcon, hoverShuffleIcon, hoverPauseIcon;
+ ImageIcon playIcon, fastForwardIcon, rewindIcon, repeatIcon, shuffleIcon, pauseIcon, repeatingIcon, shufflingIcon;
+ ImageIcon hoverPlayIcon, hoverFastForwardIcon, hoverRewindIcon, hoverRepeatIcon, hoverShuffleIcon, hoverPauseIcon, hoverRepeatingIcon, hoverShufflingIcon;
  ImageIcon volumeMuteIcon, volumeFullIcon;
  boolean isPaused = true;
+ boolean isRepeating = false;
+ boolean isShuffling = false;
 
+	
  ButtonControlPanel() {
     //setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
    // this.setLayout(new GridLayout(2,3)); //layout for panel
@@ -40,9 +43,13 @@ class ButtonControlPanel extends JPanel {
 
 	repeatIcon = new ImageIcon("img/repeat_button.png");
 	hoverRepeatIcon = new ImageIcon("img/hover_repeat_button.png");
+	repeatingIcon = new ImageIcon("img/repeating_icon.png");
+	hoverRepeatingIcon = new ImageIcon("img/hover_repeating_icon.png");
 
 	shuffleIcon = new ImageIcon("img/shuffle_button.png");
 	hoverShuffleIcon = new ImageIcon("img/hover_shuffle_button.png");
+	shufflingIcon = new ImageIcon("img/shuffling_icon.png");
+	hoverShufflingIcon = new ImageIcon("img/hover_shuffling_icon.png");
 
 	volumeMuteIcon = new ImageIcon("img/mute_image.png");
 	volumeFullIcon = new ImageIcon("img/full_volume_image.png");
@@ -196,19 +203,42 @@ class ButtonControlPanel extends JPanel {
 
 	repeat.addMouseListener(new MouseListener(){
 		public void mousePressed(MouseEvent e){
-			repeat.setIcon(repeatIcon);
+			if(isRepeating){
+				repeat.setIcon(repeatingIcon);
+				isRepeating = false;
+			}else{
+				repeat.setIcon(repeatIcon);
+				isRepeating = true;
+			}
+				
+			if(isShuffling){
+				shuffle.setIcon(shuffleIcon);
+				isShuffling = false;
+			}
 		}
 		
 		public void mouseReleased(MouseEvent e){
-			repeat.setIcon(hoverRepeatIcon);	
+			if(isRepeating){
+				repeat.setIcon(hoverRepeatingIcon);
+			}else{
+				repeat.setIcon(hoverRepeatIcon);
+			}
 		}
 
 		public void mouseEntered(MouseEvent e){
-			repeat.setIcon(hoverRepeatIcon);	
+			if(isRepeating){
+				repeat.setIcon(hoverRepeatingIcon);
+			}else{
+				repeat.setIcon(hoverRepeatIcon);
+			}
 		}
 
 		public void mouseExited(MouseEvent e){
-			repeat.setIcon(repeatIcon);
+			if(isRepeating){
+				repeat.setIcon(repeatingIcon);
+			}else{
+				repeat.setIcon(repeatIcon);
+			}
 		}
 
 		public void mouseClicked(MouseEvent e){
@@ -218,19 +248,42 @@ class ButtonControlPanel extends JPanel {
 
 	shuffle.addMouseListener(new MouseListener(){
 		public void mousePressed(MouseEvent e){
-			shuffle.setIcon(shuffleIcon);
+			if(isShuffling){
+				shuffle.setIcon(shufflingIcon);
+				isShuffling = false;
+			}else{
+				shuffle.setIcon(shuffleIcon);
+				isShuffling = true;
+			}
+			if(isRepeating){
+				repeat.setIcon(repeatIcon);
+				isRepeating = false;
+			}
+				
 		}
 		
 		public void mouseReleased(MouseEvent e){
-			shuffle.setIcon(hoverShuffleIcon);	
+			if(isShuffling){
+				shuffle.setIcon(hoverShufflingIcon);
+			}else{
+				shuffle.setIcon(hoverShuffleIcon);
+			}
 		}
 
 		public void mouseEntered(MouseEvent e){
-			shuffle.setIcon(hoverShuffleIcon);	
+			if(isShuffling){
+				shuffle.setIcon(hoverShufflingIcon);
+			}else{
+				shuffle.setIcon(hoverShuffleIcon);
+			}
 		}
 
 		public void mouseExited(MouseEvent e){
-			shuffle.setIcon(shuffleIcon);
+			if(isShuffling){
+				shuffle.setIcon(shufflingIcon);
+			}else{
+				shuffle.setIcon(shuffleIcon);
+			}
 		}
 
 		public void mouseClicked(MouseEvent e){

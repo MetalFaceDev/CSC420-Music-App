@@ -17,7 +17,7 @@ class CenterConsole extends JPanel {
 
   TagButtonPanel tagButtonPanel; //holds buttons for tags
   TagPanel tagPanel; //holds the visual tags
-	Track currentTrack;
+  Track currentTrack;
 
 
   private CenterConsole() {
@@ -29,28 +29,38 @@ class CenterConsole extends JPanel {
     Dimension size = new Dimension(400,150); //dimension of panel
     this.setPreferredSize(size); //set size of panel
 	this.setBackground(Color.DARK_GRAY);
-
   }
   private static CenterConsole centerconsole;
   	
 
 	public void initComponents(){
 		artistLabel = new JLabel("Analogtronics");
+		artistLabel.setForeground(Color.BLACK);
+
 		titleLabel = new JLabel("Time Leak");
+		titleLabel.setForeground(Color.BLACK);
+		
 		albumLabel = new JLabel("Union");
+		albumLabel.setForeground(Color.BLACK);
+
 		setTagButton = new JButton("Tag");
+
 		timeNowLabel = new JLabel("0:00");
+		timeNowLabel.setForeground(Color.BLACK);
+
 		totTimeLabel = new JLabel("2:30");
+		totTimeLabel.setForeground(Color.BLACK);
+		
 		trackTimeSlider = new JSlider(0,100); //initializes JProgressBar to 0 until a track is linked up
 		trackTimeSlider.setValue(0);
 		tagButtonPanel = new TagButtonPanel();
 		tagPanel = new TagPanel();
-		//tagPanel.setSize(trackTimeSlider.getWidth(),100);
+		tagPanel.setPreferredSize(new Dimension(trackTimeSlider.getWidth(),100));
 		tagPanel.setBackground(Color.LIGHT_GRAY);
 		tagButtonPanel.setTagPanel(tagPanel);
 		tagButtonPanel.setSlider(trackTimeSlider);
 		tagPanel.setTagButtonPanel(tagButtonPanel);
-		Dimension dim = new Dimension(300,100);
+		Dimension dim = new Dimension(500,100);
 		tagPanel.setPreferredSize(dim);
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -106,6 +116,7 @@ class CenterConsole extends JPanel {
 		c.gridy = 3;
 		c.gridwidth = 1;
 		c.gridheight = 1;
+		c.anchor = GridBagConstraints.LINE_END;
 		c.weightx = .2;
 		this.add(totTimeLabel,c);
 
@@ -115,8 +126,8 @@ class CenterConsole extends JPanel {
 			c.gridheight = 1;
 			c.weightx = .6;
 			c.gridwidth = 3;
-			Insets padding = new Insets(0,15,0,15);
-			c.insets = padding;
+			//Insets padding = new Insets(0,15,0,15);
+			//c.insets = padding;
 			c.fill = GridBagConstraints.HORIZONTAL;
 			this.add(tagPanel,c);
 

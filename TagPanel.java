@@ -1,11 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.*;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import java.io.*;
 
 public class TagPanel extends JPanel{
 	
 	Tag[] tags = new Tag[11];
-	TagButtonPanel tBP;	
+	TagButtonPanel tBP;
+	BufferedImage tagIcon;
 	
 	boolean clear = true;
 
@@ -15,6 +19,11 @@ public class TagPanel extends JPanel{
 
 	public TagPanel(){
 		super();
+		try{
+			tagIcon = ImageIO.read(new File("img/tag_icon.png"));
+		}catch(IOException e){
+		
+		}
 	}
 
 	public void paintComponent(Graphics g){
@@ -25,6 +34,8 @@ public class TagPanel extends JPanel{
 		for(int i = 0; i<tags.length; i++){
 			if(tags[i] != null){
 				g.drawRect(tags[i].xPosition, 0, 8,8);
+				
+			//  g.drawImage(tagIcon, tags[i].xPosition, 0, null);
 				g.drawString(tags[i].value,tags[i].xPosition,0);
 			}
 		}
@@ -43,7 +54,7 @@ public class TagPanel extends JPanel{
 				tag.slidePosition = position;
 				double temp = (double)position;
 				temp = temp *.01;
-				tag.xPosition = (int)(this.getWidth() * temp) -3;
+				tag.xPosition = (int)(this.getWidth() * temp);
 				tBP.buttonArray[i].setEnabled(true);
 				Integer tempInt = new Integer(i);
 				tag.value = tempInt.toString();

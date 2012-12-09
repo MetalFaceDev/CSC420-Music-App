@@ -238,7 +238,11 @@ libraryAndPlaylist.setUI(new BasicSplitPaneUI() {
     DefaultTableModel t = (DefaultTableModel) library.getModel();
     t.removeRow(selectedRowIndex);
   }
-  
+  public Object[] getPlaylistArray(){
+		return playlist.getSelectedValues();
+
+  } 
+ 
   //returns an array of the song info selected
   public String[] getSongToPlay() {
     String[] info = new String[3];
