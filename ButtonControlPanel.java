@@ -90,7 +90,7 @@ class ButtonControlPanel extends JPanel {
 	shuffle.setBorderPainted(false);
 
     volumeSlider = new JSlider(0,100);
-    volumeSlider.setPreferredSize(new Dimension(80,45));
+    volumeSlider.setPreferredSize(new Dimension(80,35));
 	muteLabel = new JLabel(volumeMuteIcon);
 	//muteLabel.setPreferredSize(new Dimension(volumeMuteIcon.getIconWidth(), volumeMuteIcon.getIconHeight()));
 	volumeFullLabel = new JLabel(volumeFullIcon);

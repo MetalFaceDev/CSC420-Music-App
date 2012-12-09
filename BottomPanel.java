@@ -48,19 +48,17 @@ final JPopupMenu popup;
   private BottomPanel() {
     //create leftmenu
     leftMenu = new JList(menuOptions);
-    leftMenu.setPreferredSize(new Dimension(65,400));
+    leftMenu.setPreferredSize(new Dimension(65,435));
     leftMenu.setBorder(BorderFactory.createEtchedBorder());
     leftMenu.setBackground(new Color(235,235,235));
     leftMenu.setForeground(Color.BLACK);
 
     JPanel menuLabel = new JPanel();
-    //menuLabel.setPreferredSize(new Dimension(30,30));
     menuLabel.add(new JLabel("Menu"));
     JPanel menuPane = new JPanel();
     menuPane.setLayout(new VerticalLayout());
     menuPane.add(menuLabel);
     menuPane.add(leftMenu);
-    //menuPane.setPreferredSize(new Dimension(65,400));
     menuPane.setBorder(BorderFactory.createEtchedBorder());
 
     //create playlist jlist
@@ -69,6 +67,53 @@ final JPopupMenu popup;
     JPanel playBar = new JPanel();
     playBar.setLayout(new VerticalLayout());
     playBar.add(new JLabel("Current Playlist"));
+    
+    //buttons for the playlist section
+    JPanel playDelBar = new JPanel();
+    JButton playDel = new JButton(""); //button for removing playlist track
+    JButton playAdd = new JButton(""); //button for adding playlist track
+    JButton playTrash = new JButton(""); //button for trashing whole playlist
+    ImageIcon removeTagIcon = new ImageIcon("img/remove_tag_icon.png");
+    ImageIcon addTagIcon = new ImageIcon("img/plus.png");
+    ImageIcon delTagIcon = new ImageIcon("img/minus.png");
+    playTrash.setIcon(removeTagIcon);
+    playAdd.setIcon(addTagIcon);
+    playDel.setIcon(delTagIcon);
+    playDel.setPreferredSize(new Dimension(40,27));
+    playAdd.setPreferredSize(new Dimension(40,27));
+    playTrash.setPreferredSize(new Dimension(40,27));
+    playDelBar.add(playAdd);
+    playDelBar.add(playDel);
+    playDelBar.add(new JLabel("   "));
+    playDelBar.add(playTrash);
+    playDelBar.setPreferredSize(new Dimension(160,29));
+
+    //listeners for buttons on playlist side
+    playDel.addActionListener(new ActionListener(){
+    	public void actionPerformed(ActionEvent e){
+        //deleted hilighted song
+          DefaultListModel lm  = (DefaultListModel) playlist.getModel();
+	  lm.removeElement(playlist.getSelectedValue());     
+	  //int i = playlist.getSelectedIndex();
+	  //playlist.removeSelectionInterval(i,i);
+	}
+    });
+
+    playAdd.addActionListener(new ActionListener(){
+    	public void actionPerformed(ActionEvent e){
+        //add highlighted song
+	 String trak = getSelectedTrack();
+	 addToList(trak);
+	}
+    });
+
+    playTrash.addActionListener(new ActionListener(){
+    	public void actionPerformed(ActionEvent e){
+        //delete everything 	
+	playlist.setListData(new String[0]);
+	}
+    });
+
     playlist.setDropMode(DropMode.INSERT);
     playlist.setBackground(new Color(235,235,235));
     playlist.setForeground(Color.BLACK);
@@ -173,9 +218,10 @@ final JPopupMenu popup;
     JScrollPane lib = new JScrollPane(library);
     //lib.setPreferredSize(new Dimension(600,400));
     JScrollPane pList = new JScrollPane(playlist);
-    pList.setPreferredSize(new Dimension(150,400));
+    pList.setPreferredSize(new Dimension(160,400));
     playBar.add(pList);
     playBar.setBorder(BorderFactory.createEtchedBorder());
+    playBar.add(playDelBar);
     JScrollPane scroll = new JScrollPane(library);
 
     //leftMenu.setPreferredSize(new Dimension(100,410));
@@ -184,11 +230,9 @@ final JPopupMenu popup;
     top.add(b);
     libraryAndPlaylist = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, menuPane, top);
     this.add(libraryAndPlaylist);
-libraryAndPlaylist.setUI(new BasicSplitPaneUI() {
+    libraryAndPlaylist.setUI(new BasicSplitPaneUI() {
             public BasicSplitPaneDivider createDefaultDivider() {
             return new BasicSplitPaneDivider(this) {
-              
-
                 @Override
                     public void paint(Graphics g) {
                     g.setColor(Color.DARK_GRAY);
@@ -200,6 +244,18 @@ libraryAndPlaylist.setUI(new BasicSplitPaneUI() {
         });
        // libraryAndPlaylist.setBorder(null);
        
+    b.setUI(new BasicSplitPaneUI() {
+            public BasicSplitPaneDivider createDefaultDivider() {
+            return new BasicSplitPaneDivider(this) {
+                @Override
+                    public void paint(Graphics g) {
+                    g.setColor(Color.DARK_GRAY);
+                    g.fillRect(0, 0, getSize().width, getSize().height);
+                        super.paint(g);
+                    }
+            };
+            }
+        });
   }
 
   //gets the position of the mouse

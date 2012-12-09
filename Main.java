@@ -17,6 +17,7 @@ try {
 UIManager.put("nimbusBase", new Color(7,66,60));
 UIManager.put("control", Color.DARK_GRAY);
 UIManager.put("textForeground", Color.WHITE);
+UIManager.put("info", new Color(7,66,60));
 
     SwingUtilities.invokeLater(new Runnable() {
       public void run() {
