@@ -119,6 +119,8 @@ class ButtonControlPanel extends JPanel {
 			if(isPaused){
 				play.setIcon(playIcon);
 				isPaused = false;
+			        CenterConsole c = CenterConsole.getInstance();
+			        c.setPlaySong();
 			}else{
 				play.setIcon(pauseIcon);
 				isPaused = true;
