@@ -118,8 +118,7 @@ public class SearchPanel extends JPanel implements MouseListener {
 
 			quickPlayButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					CenterConsole temp = CenterConsole.getInstance();
-								
+					CenterConsole temp = CenterConsole.getInstance();			
 			//		temp.artistLabel.setText();
 			//		temp.titleLabel.setText();
 			//		temp.albumLabel.setText();
@@ -139,6 +138,7 @@ public class SearchPanel extends JPanel implements MouseListener {
 			int size = tempList.getModel().getSize();
 
 			if(!tempList.isSelectionEmpty() && size!=0){
+				emptyPlaylist = false;
 				int point = tempList.getSelectedIndex();
 				int anchor = tempList.getSelectedIndex();
 				
@@ -167,6 +167,7 @@ public class SearchPanel extends JPanel implements MouseListener {
 				emptyPlaylist = true;				
 	
 			}else if(tempList.isSelectionEmpty()){
+				emptyPlaylist = false;
 				tempList.setSelectedIndex(0);
 				populateQuickSearch();
 

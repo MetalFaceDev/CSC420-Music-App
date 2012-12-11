@@ -159,7 +159,8 @@ class ButtonControlPanel extends JPanel {
 
 	rewind.addMouseListener(new MouseListener(){
 		public void mousePressed(MouseEvent e){
-			//rewind if held
+			CenterConsole c = CenterConsole.getInstance();
+			c.setPreviousSong();
 			rewind.setIcon(rewindIcon);
 		}
 		
@@ -183,7 +184,10 @@ class ButtonControlPanel extends JPanel {
 	
 	fastForward.addMouseListener(new MouseListener(){
 		public void mousePressed(MouseEvent e){
-			fastForward.setIcon(fastForwardIcon);;
+			fastForward.setIcon(fastForwardIcon);
+				
+			CenterConsole c = CenterConsole.getInstance();
+			c.setNextSong();
 		}
 			
 		public void mouseReleased(MouseEvent e){

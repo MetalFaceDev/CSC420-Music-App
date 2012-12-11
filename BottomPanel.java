@@ -18,7 +18,7 @@ class BottomPanel extends JPanel {
   JTable library;
   int cellX;
   int cellY;
-final JPopupMenu popup;
+  final JPopupMenu popup;
   String[] menuOptions = {"Music","Playlist"};
   String[] playlistOptions = {"next songs go here","Song1","Song2","Song3","Song4","anotherSong",
   "MoreSongs..","Song1","Song2","Song3","Song4","anotherSong","MoreSongs..","somemoremusic","anotheranotheranothersong","moremoremoremusic"};
@@ -196,6 +196,7 @@ final JPopupMenu popup;
            return true;   //Disallow the editing of any cell
        }
    };
+	library.setRowSelectionInterval(0,0);
     library.setColumnSelectionAllowed(false);
     //library.setShowHorizontalLines(true);
     library.setDragEnabled(true);
@@ -372,4 +373,25 @@ final JPopupMenu popup;
     
     return info;
   }
+	
+	public String[] getNextSongToPlay(){
+    	int selectedRowIndex = library.getSelectedRow();
+		try{
+			library.setRowSelectionInterval(selectedRowIndex+1,selectedRowIndex+1); 
+   		 }catch(IllegalArgumentException e){
+			
+		}
+		return getSongToPlay();
+	}
+
+	public String[] getPreviousSongToPlay(){
+    	int selectedRowIndex = library.getSelectedRow();
+		if(selectedRowIndex == 0 ){
+			//do Nothing
+		}else{
+			library.setRowSelectionInterval(selectedRowIndex -1, selectedRowIndex - 1); 
+    	}
+		return getSongToPlay();
+	}
+	
 }

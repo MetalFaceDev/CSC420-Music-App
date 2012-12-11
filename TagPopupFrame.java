@@ -31,6 +31,7 @@ class TagPopupFrame extends JFrame implements ActionListener{
     btns.setLayout(new FlowLayout());
     btns.add(login = new JButton("Add Note."));
     btns.add(cancel= new JButton("No Note, Just Tag."));
+
     cancel.addActionListener(this);
 
     panel.add(loginPanel);

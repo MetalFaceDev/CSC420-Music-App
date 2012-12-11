@@ -46,9 +46,10 @@ class CenterConsole extends JPanel {
 		setTagButton = new JButton("Tag");
 
 		timeNowLabel = new JLabel("0:00");
+		
 		timeNowLabel.setForeground(Color.BLACK);
 
-		totTimeLabel = new JLabel("2:30");
+		totTimeLabel = new JLabel("      2:30");
 		totTimeLabel.setForeground(Color.BLACK);
 		
 		trackTimeSlider = new JSlider(0,100); //initializes JProgressBar to 0 until a track is linked up
@@ -60,7 +61,7 @@ class CenterConsole extends JPanel {
 		tagButtonPanel.setTagPanel(tagPanel);
 		tagButtonPanel.setSlider(trackTimeSlider);
 		tagPanel.setTagButtonPanel(tagButtonPanel);
-		Dimension dim = new Dimension(500,100);
+		Dimension dim = new Dimension(500,150);
 		tagPanel.setPreferredSize(dim);
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -108,6 +109,7 @@ class CenterConsole extends JPanel {
 		c.gridwidth = 3;
 		c.gridheight = 1;
 		c.weightx = .6;
+		c.anchor = GridBagConstraints.LINE_END;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		this.add(trackTimeSlider,c);
 
@@ -121,15 +123,15 @@ class CenterConsole extends JPanel {
 		this.add(totTimeLabel,c);
 
 	//add tagPanel
-			c.gridx = 1;
-			c.gridy = 4;
-			c.gridheight = 1;
-			c.weightx = .6;
-			c.gridwidth = 3;
-			//Insets padding = new Insets(0,15,0,15);
-			//c.insets = padding;
-			c.fill = GridBagConstraints.HORIZONTAL;
-			this.add(tagPanel,c);
+		c.gridx = 1;
+		c.gridy = 4;
+		c.gridheight = 1;
+		c.weightx = .9;
+		c.gridwidth = 3;
+		//Insets padding = new Insets(0,15,0,15);
+		//c.insets = padding;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		this.add(tagPanel,c);
 
 	//add tagButtonPanel
 		c.gridx = 0;
@@ -201,10 +203,32 @@ class CenterConsole extends JPanel {
    }
 
    public void setPlaySong() {
+	 trackTimeSlider.setValue(0);
      BottomPanel b = BottomPanel.getInstance();
      String[] info = b.getSongToPlay();
      titleLabel.setText(info[0]);
      artistLabel.setText(info[1]);
      albumLabel.setText(info[2]);
    }
+
+	public void setNextSong(){
+
+	 trackTimeSlider.setValue(0);
+     BottomPanel b = BottomPanel.getInstance();
+     String[] info = b.getNextSongToPlay();
+     titleLabel.setText(info[0]);
+     artistLabel.setText(info[1]);
+     albumLabel.setText(info[2]);
+
+	}
+	
+	public void setPreviousSong(){
+
+	 trackTimeSlider.setValue(0);
+     BottomPanel b = BottomPanel.getInstance();
+     String[] info = b.getPreviousSongToPlay();
+     titleLabel.setText(info[0]);
+     artistLabel.setText(info[1]);
+     albumLabel.setText(info[2]);
+	}
 }

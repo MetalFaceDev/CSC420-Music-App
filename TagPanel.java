@@ -33,7 +33,7 @@ public class TagPanel extends JPanel{
 			
 		for(int i = 0; i<tags.length; i++){
 			if(tags[i] != null){
-			//	g.drawRect(tags[i].xPosition, 0, 8,8);
+				g.drawRect(tags[i].xPosition, 0, 8,8);
 				
 			    g.drawImage(tagIcon, tags[i].xPosition, 0, null);
 				g.drawString(tags[i].value,tags[i].xPosition,0);
