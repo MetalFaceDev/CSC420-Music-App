@@ -1,7 +1,6 @@
 //this panel will hold the menu on the bottom left panel
 
 import javax.swing.*;
-
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 import java.awt.*;
@@ -18,10 +17,8 @@ class BottomPanel extends JPanel {
   JTable library;
   int cellX;
   int cellY;
-final JPopupMenu popup;
+  final JPopupMenu popup;
   String[] menuOptions = {"Music","Playlist"};
-  String[] playlistOptions = {"next songs go here","Song1","Song2","Song3","Song4","anotherSong",
-  "MoreSongs..","Song1","Song2","Song3","Song4","anotherSong","MoreSongs..","somemoremusic","anotheranotheranothersong","moremoremoremusic"};
   private String[] tableHeaders = {"Track Title", "Artist", "Album", "Likes"};
   private String[][] sampleTracks = {{"Time Leak","Analogtronics","Union","9"},
   {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Run Away","Akua Naru","The Journey Aflame","14"},
@@ -107,6 +104,7 @@ final JPopupMenu popup;
     j.add(save);
     Font font = new Font(save.getFont().getName(),save.getFont().getStyle(),10);
     save.setFont(font);
+    save.setToolTipText("Save this playlist");
     playBar.add(j);
 
     //buttons for the playlist section
@@ -138,7 +136,10 @@ final JPopupMenu popup;
     playlistButton.addActionListener(new ActionListener(){
     	public void actionPerformed(ActionEvent e){
 	    PlaylistFrame pFrame;
-            pFrame = new PlaylistFrame();
+            pFrame = PlaylistFrame.create();
+	    pFrame.playlistframe = null;
+            pFrame = PlaylistFrame.create();
+
             pFrame.setVisible(true);
 	}
     });
@@ -172,6 +173,15 @@ final JPopupMenu popup;
 	}
     });
 
+    save.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e){
+	    PlaylistFrame pFrame;
+            pFrame = PlaylistFrame.create();
+	    pFrame.passPlaylist();
+            pFrame.setVisible(true);
+	}
+    });
+
     playlist.setDropMode(DropMode.INSERT);
     playlist.setBackground(new Color(235,235,235));
     playlist.setForeground(Color.BLACK);
@@ -202,7 +212,6 @@ final JPopupMenu popup;
     //library.setTransferHandler(new TransferHandler("text"));
     TransferHandler t = library.getTransferHandler(); 
     library.setForeground(Color.BLACK);
-    library.setPreferredSize(new Dimension(350,455));
 
     //create jpopupmenu
     popup = new JPopupMenu();
@@ -283,13 +292,15 @@ final JPopupMenu popup;
     playBar.setBorder(BorderFactory.createEtchedBorder());
     playBar.add(playDelBar);
     JScrollPane scroll = new JScrollPane(library);
+    scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
 
     //leftMenu.setPreferredSize(new Dimension(100,410));
     JSplitPane b = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,playBar);
     JPanel top = new JPanel();
     top.add(b);
     libraryAndPlaylist = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, menuPane, top);
-    this.add(b); //change!
+    this.add(b); 
     libraryAndPlaylist.setUI(new BasicSplitPaneUI() {
             public BasicSplitPaneDivider createDefaultDivider() {
             return new BasicSplitPaneDivider(this) {
@@ -326,10 +337,12 @@ final JPopupMenu popup;
 
   //gets the selected track in the library jtable
   public String getSelectedTrack() {
-    //get the row index
+    //get the row index 
     int selectedRowIndex = library.getSelectedRow(); 
+    String[] songInfo = getSongToPlay();
     String selectedObject = (String) library.getModel().getValueAt(selectedRowIndex, 0);
-    selectedObject = selectedObject+" - "+(String) library.getModel().getValueAt(selectedRowIndex, 1);
+    //selectedObject = selectedObject+" - "+(String) library.getModel().getValueAt(selectedRowIndex, 1);
+    selectedObject = songInfo[0]+" - "+songInfo[1]+" - "+songInfo[2];
     return selectedObject;
   }
 
@@ -371,5 +384,10 @@ final JPopupMenu popup;
     info[2] = album;
     
     return info;
+  }
+
+  public String[] getSongFromPlaylist(String song) {
+    String[] songInfo = song.split(" - ");
+    return songInfo; //array is of size 3 
   }
 }
