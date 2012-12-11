@@ -110,6 +110,11 @@ public class SearchPanel extends JPanel implements MouseListener {
 					}
 				}
 			});			
+Action action = new AbstractAction() {};
+String keyStrokeAndKey = "control k";
+KeyStroke keyStroke = KeyStroke.getKeyStroke(keyStrokeAndKey);
+component.getInputMap(...).put(keyStroke, keyStrokeAndKey);
+component.getActionMap().put(keyStrokeAndKey, action);
 	
 		}
 

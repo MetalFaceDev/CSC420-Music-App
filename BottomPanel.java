@@ -24,23 +24,41 @@ final JPopupMenu popup;
   "MoreSongs..","Song1","Song2","Song3","Song4","anotherSong","MoreSongs..","somemoremusic","anotheranotheranothersong","moremoremoremusic"};
   private String[] tableHeaders = {"Track Title", "Artist", "Album", "Likes"};
   private String[][] sampleTracks = {{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},
-  {"Skipping Rocks","Oddisee","People See What They Hear", "15"}};
+  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Run Away","Akua Naru","The Journey Aflame","14"},
+  {"Far Fowls","Nujabes","Spiritual State", "21"},{"Optimist","P.O.S","Never Better","15"},
+  {"O Heaven","Blu & Exile","Give Me My Flowers", "12"},{"How Many of Us?","Damu the Fudgemunk","Damumelo","9"},
+  {"Homare","Shing 02","Untitled", "15"},{"Time Leak","Analogtronics","Union","9"},
+  {"Right Here","DJ Mitsu","New Awakening", "5"},{"Time Leak","Analogtronics","Union","9"},
+  {"Glass","Eyedea & Abilities","E&A", "15"},{"Strange Planet","Homeboy Sandman","The Good Sun","19"},
+  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},{"Time Leak","Analogtronics","Union","9"},
+  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Run Away","Akua Naru","The Journey Aflame","14"},
+  {"Far Fowls","Nujabes","Spiritual State", "21"},{"Optimist","P.O.S","Never Better","15"},
+  {"O Heaven","Blu & Exile","Give Me My Flowers", "12"},{"How Many of Us?","Damu the Fudgemunk","Damumelo","9"},
+  {"Homare","Shing 02","Untitled", "15"},{"Time Leak","Analogtronics","Union","9"},
+  {"Right Here","DJ Mitsu","New Awakening", "5"},{"Time Leak","Analogtronics","Union","9"},
+  {"Glass","Eyedea & Abilities","E&A", "15"},{"Strange Planet","Homeboy Sandman","The Good Sun","19"},
+  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},{"Time Leak","Analogtronics","Union","9"},
+  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Run Away","Akua Naru","The Journey Aflame","14"},
+  {"Far Fowls","Nujabes","Spiritual State", "21"},{"Optimist","P.O.S","Never Better","15"},
+  {"O Heaven","Blu & Exile","Give Me My Flowers", "12"},{"How Many of Us?","Damu the Fudgemunk","Damumelo","9"},
+  {"Homare","Shing 02","Untitled", "15"},{"Time Leak","Analogtronics","Union","9"},
+  {"Right Here","DJ Mitsu","New Awakening", "5"},{"Time Leak","Analogtronics","Union","9"},
+  {"Glass","Eyedea & Abilities","E&A", "15"},{"Strange Planet","Homeboy Sandman","The Good Sun","19"},
+  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},{"Time Leak","Analogtronics","Union","9"},
+  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Run Away","Akua Naru","The Journey Aflame","14"},
+  {"Far Fowls","Nujabes","Spiritual State", "21"},{"Optimist","P.O.S","Never Better","15"},
+  {"O Heaven","Blu & Exile","Give Me My Flowers", "12"},{"How Many of Us?","Damu the Fudgemunk","Damumelo","9"},
+  {"Homare","Shing 02","Untitled", "15"},{"Time Leak","Analogtronics","Union","9"},
+  {"Right Here","DJ Mitsu","New Awakening", "5"},{"Time Leak","Analogtronics","Union","9"},
+  {"Glass","Eyedea & Abilities","E&A", "15"},{"Strange Planet","Homeboy Sandman","The Good Sun","19"},
+  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"},{"Time Leak","Analogtronics","Union","9"},
+  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Run Away","Akua Naru","The Journey Aflame","14"},
+  {"Far Fowls","Nujabes","Spiritual State", "21"},{"Optimist","P.O.S","Never Better","15"},
+  {"O Heaven","Blu & Exile","Give Me My Flowers", "12"},{"How Many of Us?","Damu the Fudgemunk","Damumelo","9"},
+  {"Homare","Shing 02","Untitled", "15"},{"Time Leak","Analogtronics","Union","9"},
+  {"Right Here","DJ Mitsu","New Awakening", "5"},{"Time Leak","Analogtronics","Union","9"},
+  {"Glass","Eyedea & Abilities","E&A", "15"},{"Strange Planet","Homeboy Sandman","The Good Sun","19"},
+  {"Skipping Rocks","Oddisee","People See What They Hear", "15"},{"Time Leak","Analogtronics","Union","9"}};
 
   //arraylist to hold track objects
   JSplitPane libraryAndPlaylist; //holds library and playlist jscrollpanes
@@ -63,7 +81,18 @@ final JPopupMenu popup;
 
     //create playlist jlist
     listmodel = new DefaultListModel();
-    playlist = new JList(listmodel);
+    playlist = new JList(listmodel){
+	public Component getListCellRendererComponent(JList list, Object value,
+                         int index, boolean isSelected, boolean cellHasFocus) {
+
+        if (index % 2 == 0) setBackground(Color.WHITE);
+        else setBackground(Color.GRAY); 
+        return this;
+    }
+  };
+    
+    playlist.setCellRenderer( new MyJListCellRenderer() );
+
     JPanel playBar = new JPanel();
     playBar.setLayout(new VerticalLayout());
     playBar.add(new JLabel("Current Playlist"));
@@ -86,6 +115,9 @@ final JPopupMenu popup;
     playDelBar.add(playDel);
     playDelBar.add(new JLabel("   "));
     playDelBar.add(playTrash);
+    playAdd.setToolTipText("Add track to current playlist."); 
+    playDel.setToolTipText("Remove selected track in current playlist."); 
+    playTrash.setToolTipText("Clear current playlist."); 
     playDelBar.setPreferredSize(new Dimension(160,29));
 
     //listeners for buttons on playlist side
@@ -110,13 +142,17 @@ final JPopupMenu popup;
     playTrash.addActionListener(new ActionListener(){
     	public void actionPerformed(ActionEvent e){
         //delete everything 	
-	playlist.setListData(new String[0]);
+	//playlist.setListData(new String[0]);
+	playlist.removeAll();
+          DefaultListModel lm  = (DefaultListModel) playlist.getModel();
+	  lm.removeAllElements();     
 	}
     });
 
     playlist.setDropMode(DropMode.INSERT);
     playlist.setBackground(new Color(235,235,235));
     playlist.setForeground(Color.BLACK);
+
 
     //create library jtable
     library = new JTable(sampleTracks,tableHeaders){
@@ -138,7 +174,7 @@ final JPopupMenu popup;
        }
    };
     library.setColumnSelectionAllowed(false);
-    library.setShowHorizontalLines(true);
+    //library.setShowHorizontalLines(true);
     library.setDragEnabled(true);
     //library.setTransferHandler(new TransferHandler("text"));
     TransferHandler t = library.getTransferHandler(); 
