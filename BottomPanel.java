@@ -81,27 +81,41 @@ final JPopupMenu popup;
 
     //create playlist jlist
     listmodel = new DefaultListModel();
-    playlist = new JList(listmodel){
-	public Component getListCellRendererComponent(JList list, Object value,
-                         int index, boolean isSelected, boolean cellHasFocus) {
-
-        if (index % 2 == 0) setBackground(Color.WHITE);
-        else setBackground(Color.GRAY); 
-        return this;
-    }
-  };
-    
+    playlist = new JList(listmodel);
     playlist.setCellRenderer( new MyJListCellRenderer() );
 
     JPanel playBar = new JPanel();
     playBar.setLayout(new VerticalLayout());
-    playBar.add(new JLabel("Current Playlist"));
-    
+    JLabel ilab = new JLabel("Current Playlist                       ");
+    playBar.add(ilab);
+    JPanel j = new JPanel();
+    GridBagLayout gbag = new GridBagLayout();
+    GridBagConstraints gbc = new GridBagConstraints();
+    j.setLayout(gbag);
+    gbc.gridx =0;
+    gbc.gridy = 0;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbag.setConstraints(ilab, gbc);
+    j.add(ilab);
+    JButton save = new JButton("Save");
+    save.setPreferredSize(new Dimension(54,30));
+    j.add(new JLabel("   "));
+    gbc.gridx = 1;
+    gbc.gridy = 0;
+    gbag.setConstraints(save, gbc);
+    gbc.anchor = GridBagConstraints.EAST;
+    j.add(save);
+    Font font = new Font(save.getFont().getName(),save.getFont().getStyle(),10);
+    save.setFont(font);
+    playBar.add(j);
+
     //buttons for the playlist section
     JPanel playDelBar = new JPanel();
     JButton playDel = new JButton(""); //button for removing playlist track
     JButton playAdd = new JButton(""); //button for adding playlist track
     JButton playTrash = new JButton(""); //button for trashing whole playlist
+    JButton playlistButton = new JButton("Playlists"); //button for trashing whole playlist
+    playlistButton.setFont(font);
     ImageIcon removeTagIcon = new ImageIcon("img/remove_tag_icon.png");
     ImageIcon addTagIcon = new ImageIcon("img/plus.png");
     ImageIcon delTagIcon = new ImageIcon("img/minus.png");
@@ -111,14 +125,23 @@ final JPopupMenu popup;
     playDel.setPreferredSize(new Dimension(40,27));
     playAdd.setPreferredSize(new Dimension(40,27));
     playTrash.setPreferredSize(new Dimension(40,27));
+    playDelBar.add(playlistButton);
+    playDelBar.add(new JLabel("   "));
     playDelBar.add(playAdd);
     playDelBar.add(playDel);
-    playDelBar.add(new JLabel("   "));
     playDelBar.add(playTrash);
     playAdd.setToolTipText("Add track to current playlist."); 
     playDel.setToolTipText("Remove selected track in current playlist."); 
     playTrash.setToolTipText("Clear current playlist."); 
-    playDelBar.setPreferredSize(new Dimension(160,29));
+    playDelBar.setPreferredSize(new Dimension(240,29));
+
+    playlistButton.addActionListener(new ActionListener(){
+    	public void actionPerformed(ActionEvent e){
+	    PlaylistFrame pFrame;
+            pFrame = new PlaylistFrame();
+            pFrame.setVisible(true);
+	}
+    });
 
     //listeners for buttons on playlist side
     playDel.addActionListener(new ActionListener(){
@@ -179,6 +202,7 @@ final JPopupMenu popup;
     //library.setTransferHandler(new TransferHandler("text"));
     TransferHandler t = library.getTransferHandler(); 
     library.setForeground(Color.BLACK);
+    library.setPreferredSize(new Dimension(350,455));
 
     //create jpopupmenu
     popup = new JPopupMenu();
@@ -254,7 +278,7 @@ final JPopupMenu popup;
     JScrollPane lib = new JScrollPane(library);
     //lib.setPreferredSize(new Dimension(600,400));
     JScrollPane pList = new JScrollPane(playlist);
-    pList.setPreferredSize(new Dimension(160,400));
+    pList.setPreferredSize(new Dimension(250,400));//160 400 default
     playBar.add(pList);
     playBar.setBorder(BorderFactory.createEtchedBorder());
     playBar.add(playDelBar);
@@ -265,7 +289,7 @@ final JPopupMenu popup;
     JPanel top = new JPanel();
     top.add(b);
     libraryAndPlaylist = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, menuPane, top);
-    this.add(libraryAndPlaylist);
+    this.add(b); //change!
     libraryAndPlaylist.setUI(new BasicSplitPaneUI() {
             public BasicSplitPaneDivider createDefaultDivider() {
             return new BasicSplitPaneDivider(this) {

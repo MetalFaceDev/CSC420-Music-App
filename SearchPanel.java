@@ -10,7 +10,6 @@ public class SearchPanel extends JPanel implements MouseListener {
 		JButton searchButton;
 		String[] trackArray;
 		int positionCount = 0;
-		
 		JButton quickPlayButton;
 
 		public SearchPanel(){
