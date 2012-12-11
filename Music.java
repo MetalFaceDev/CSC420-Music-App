@@ -33,7 +33,7 @@ class Music implements ActionListener {
     frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     topPanel = new JPanel();
 
-    btnPanel = new ButtonControlPanel();
+    btnPanel = ButtonControlPanel.create();
     infoDisplay = CenterConsole.create();
     sharePanel = new SharePanel();
 	

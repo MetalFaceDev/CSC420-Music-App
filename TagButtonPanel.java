@@ -217,7 +217,7 @@ public class TagButtonPanel extends JPanel{
 
 		removeButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//remove currrently selected tag		
+				tagPanel.clearTags();				
 			}
 		});
 		
@@ -231,7 +231,18 @@ public class TagButtonPanel extends JPanel{
 			this.jSlider = jS;
 	}
 
-
+	public void disableButtons(){
+		tagButton1.setEnabled(false);
+		tagButton2.setEnabled(false);
+		tagButton3.setEnabled(false);
+		tagButton4.setEnabled(false);
+		tagButton5.setEnabled(false);
+		tagButton6.setEnabled(false);
+		tagButton7.setEnabled(false);
+		tagButton8.setEnabled(false);
+		tagButton9.setEnabled(false);
+		tagButton10.setEnabled(false);
+	}
 	public void moveSlider(int buttonNumber){
 		if(tagPanel.tags[buttonNumber-1] != null){
 			jSlider.setValue(tagPanel.tags[buttonNumber-1].slidePosition);	

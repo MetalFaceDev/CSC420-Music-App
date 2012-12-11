@@ -9,6 +9,7 @@ public class TagPanel extends JPanel{
 	
 	Tag[] tags = new Tag[11];
 	TagButtonPanel tBP;
+	
 	BufferedImage tagIcon;
 	
 	boolean clear = true;
@@ -81,6 +82,10 @@ public class TagPanel extends JPanel{
 
 	public void clearTags(){
 		clear = true;
+		for(int i = 0;i<10;i++){
+			tags[i] = null;
+		}
+		tBP.disableButtons();
 		this.repaint();
 		
 	}

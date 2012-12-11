@@ -238,6 +238,10 @@ class BottomPanel extends JPanel {
       if (e.getActionCommand().equals("Play")){
        CenterConsole c = CenterConsole.getInstance();
        c.setPlaySong();
+	   ButtonControlPanel cP = ButtonControlPanel.getInstance();
+	   cP.play.setIcon(cP.pauseIcon);
+	   cP.isPaused = false;
+		cP.play.setToolTipText("Pause song");
       }
        }
     });

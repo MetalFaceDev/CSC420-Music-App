@@ -19,7 +19,7 @@ class ButtonControlPanel extends JPanel {
  boolean isPaused = true;
  boolean isRepeating = false;
  boolean isShuffling = false;
-
+private static ButtonControlPanel controlPanel;
 	
  ButtonControlPanel() {
     //setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
@@ -118,10 +118,12 @@ class ButtonControlPanel extends JPanel {
 		public void mousePressed(MouseEvent e){
 			if(isPaused){
 				play.setIcon(playIcon);
+				play.setToolTipText("Pause song");
 				isPaused = false;
-			        CenterConsole c = CenterConsole.getInstance();
-			        c.setPlaySong();
+	//		        CenterConsole c = CenterConsole.getInstance();
+	//		        c.setPlaySong();
 			}else{
+				play.setToolTipText("Play loaded song");
 				play.setIcon(pauseIcon);
 				isPaused = true;
 			}
@@ -296,9 +298,19 @@ class ButtonControlPanel extends JPanel {
 
 		}
 	});
+  }
 
-	
- }
+	public static ButtonControlPanel create(){
+		if(controlPanel == null){
+			controlPanel =  new ButtonControlPanel();
+		}
+		return controlPanel;
+	}
+
+	public static ButtonControlPanel getInstance(){
+		return controlPanel;
+	}	
+ 
 }
 
 /*

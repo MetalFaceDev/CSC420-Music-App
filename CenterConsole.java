@@ -209,6 +209,7 @@ class CenterConsole extends JPanel {
      titleLabel.setText(info[0]);
      artistLabel.setText(info[1]);
      albumLabel.setText(info[2]);
+		//tagPanel.clearTags();	
    }
 
 	public void setNextSong(){

@@ -118,10 +118,18 @@ public class SearchPanel extends JPanel implements MouseListener {
 
 			quickPlayButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					CenterConsole temp = CenterConsole.getInstance();			
-			//		temp.artistLabel.setText();
-			//		temp.titleLabel.setText();
-			//		temp.albumLabel.setText();
+					BottomPanel bP = BottomPanel.getInstance();
+					CenterConsole cC = CenterConsole.getInstance();
+					String[] sArray = bP.getSongFromPlaylist(trackSelection.getText());
+					
+					cC.artistLabel.setText(sArray[0]);
+					cC.titleLabel.setText(sArray[1]);
+					cC.albumLabel.setText(sArray[2]);
+				
+					ButtonControlPanel control = ButtonControlPanel.getInstance();
+					control.play.setIcon(control.pauseIcon);						
+					control.isPaused = false;
+					control.play.setToolTipText("Pause song");
 			//		temp.timeNowLabel.setText();
 			//		temp.totTimeLabel.setText();
 				}
@@ -163,7 +171,7 @@ public class SearchPanel extends JPanel implements MouseListener {
 					tempList.setSelectedIndex(anchor);	
 			
 			}else if(size==0){
-				trackSelection.setText("            Empty");
+				trackSelection.setText("Empty");
 				emptyPlaylist = true;				
 	
 			}else if(tempList.isSelectionEmpty()){
@@ -176,11 +184,12 @@ public class SearchPanel extends JPanel implements MouseListener {
 
 		public void setCollapseSearchVisible(boolean b){
 				if(b){
-					backButton.setVisible(true);
-					trackSelection.setVisible(true);
-					forwardButton.setVisible(true);
-					quickPlayButton.setVisible(true);
-					
+					if(emptyPlaylist == false){
+						backButton.setVisible(true);
+						trackSelection.setVisible(true);
+						forwardButton.setVisible(true);
+						quickPlayButton.setVisible(true);
+					}
 					searchTextField.setVisible(false);
 					searchButton.setVisible(false);
 					
