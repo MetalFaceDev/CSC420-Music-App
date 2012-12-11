@@ -21,6 +21,7 @@ class Music implements ActionListener {
  String[] quickSearchArray;
 
   Music() {
+//	window.setIconImage(Toolkit.getDefaultToolkit().getImage("img/collapse_icon.png"));
     frm = new JFrame("Music Player");
     //frm.setLayout(gbag);
     frm.setLayout(new VerticalLayout());

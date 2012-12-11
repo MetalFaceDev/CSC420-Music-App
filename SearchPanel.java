@@ -10,14 +10,14 @@ public class SearchPanel extends JPanel implements MouseListener {
 		JButton searchButton;
 		String[] trackArray;
 		int positionCount = 0;
-		
+		JList tempList;	
 		JButton quickPlayButton;
-
+		boolean emptyPlaylist= true;
+		
 		public SearchPanel(){
 			super();
 			this.setBackground(Color.DARK_GRAY);
 			initComponents();
-			//quickSearchArray = BottomPanel.getInstance().playlist.getSelectedValues();;
 		}
 
 		private void initComponents(){
@@ -42,7 +42,7 @@ public class SearchPanel extends JPanel implements MouseListener {
 			searchTextField.setActionCommand("search");
 			searchTextField.setSelectedTextColor(Color.gray);
 
-			searchButton = new JButton("Enter");
+			searchButton = new JButton("Search");
             searchButton.setToolTipText("Search");
 			setCollapseSearchVisible(false);
 
@@ -81,45 +81,63 @@ public class SearchPanel extends JPanel implements MouseListener {
 
 			backButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					positionCount--;
-					if(positionCount >=0 ){	
-						trackSelection.setText(trackArray[positionCount]);
-					}
-					else{
-						positionCount = trackArray.length;
-						trackSelection.setText(trackArray[positionCount]);
+					if(!emptyPlaylist){
+						positionCount--;
+						if(positionCount >=0 ){	
+							trackSelection.setText(trackArray[positionCount]);
+						}
+						else{
+							positionCount = trackArray.length;
+							trackSelection.setText(trackArray[positionCount]);
 
+						}
 					}
 				}
+					
 			});
 
 			forwardButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					positionCount++;
+					if(!emptyPlaylist){
+						positionCount++;
 
-					if(positionCount < trackArray.length) {
+						if(positionCount < trackArray.length) {
 						
-						trackSelection.setText(trackArray[positionCount]);
+							trackSelection.setText(trackArray[positionCount]);
 						
 
-					}else{
-						positionCount = 0;
-						trackSelection.setText(trackArray[positionCount]);
+						}else{
+							positionCount = 0;
+							trackSelection.setText(trackArray[positionCount]);
+						}
 					}
 				}
+			});	
+
+			quickPlayButton.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					CenterConsole temp = CenterConsole.getInstance();
+								
+			//		temp.artistLabel.setText();
+			//		temp.titleLabel.setText();
+			//		temp.albumLabel.setText();
+			//		temp.timeNowLabel.setText();
+			//		temp.totTimeLabel.setText();
+				}
+
 			});			
 
 	
 		}
 
+			
+
 		public void populateQuickSearch(){
 					
-			JList tempList = BottomPanel.getInstance().playlist;
+			tempList = BottomPanel.getInstance().playlist;
 			int size = tempList.getModel().getSize();
-			
-		
 
-			if(tempList.isSelectionEmpty() !=true && size!=0){
+			if(!tempList.isSelectionEmpty() && size!=0){
 				int point = tempList.getSelectedIndex();
 				int anchor = tempList.getSelectedIndex();
 				
@@ -143,9 +161,14 @@ public class SearchPanel extends JPanel implements MouseListener {
 				
 					tempList.setSelectedIndex(anchor);	
 			
-			}else{
-				trackSelection.setText("playlist is empty");
-				
+			}else if(size==0){
+				trackSelection.setText("            Empty");
+				emptyPlaylist = true;				
+	
+			}else if(tempList.isSelectionEmpty()){
+				tempList.setSelectedIndex(0);
+				populateQuickSearch();
+
 			}
 		}
 
